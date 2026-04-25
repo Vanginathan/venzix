@@ -11,17 +11,20 @@ import Contact from "@/components/landing/Contact";
 import Footer from "@/components/landing/Footer";
 
 const Index = () => (
-  <div className="min-h-screen bg-background">
+  <div className="min-h-screen bg-shell">
     <a
       href="#hero"
       className="sr-only focus:not-sr-only focus:fixed focus:top-2 focus:left-2 focus:z-[100] focus:px-3 focus:py-2 focus:bg-ink focus:text-white focus:rounded-md"
     >
       Skip to main content
     </a>
-    <Navbar />
-    <main>
-      <Hero />
-      <Proof />
+    <main className="px-3 md:px-6 pt-3 md:pt-6">
+      <div className="relative">
+        <Navbar />
+        <Hero />
+      </div>
+      <div className="bg-white rounded-[28px] mt-3 md:mt-6 overflow-hidden">
+        <Proof />
       <Services />
       <Portfolio />
       <Process />
@@ -29,6 +32,7 @@ const Index = () => (
       <Pricing />
       <FAQ />
       <Contact />
+      </div>
     </main>
     <Footer />
   </div>
