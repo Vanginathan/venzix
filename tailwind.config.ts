@@ -44,6 +44,8 @@ export default {
         tile: "hsl(var(--tile))",
         badge: "hsl(var(--badge))",
         gold: "hsl(var(--gold))",
+        shell: "hsl(var(--shell))",
+        amber: "hsl(var(--amber))",
         muted: {
           DEFAULT: "hsl(var(--muted))",
           foreground: "hsl(var(--muted-foreground))",

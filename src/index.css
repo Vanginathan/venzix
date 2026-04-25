@@ -47,6 +47,8 @@
     --tile: 0 0% 96%;                   /* #F4F4F4 mosaic placeholder */
     --badge: 0 0% 94%;                  /* #F0F0F0 */
     --gold: 38 92% 50%;                 /* #F59E0B testimonial stars */
+    --shell: 0 0% 94%;                  /* #F0F0F0 page outer */
+    --amber: 38 92% 50%;                /* status dot */
 
     --radius: 0.625rem;                 /* 10px form inputs */
 
