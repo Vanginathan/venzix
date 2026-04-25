@@ -1,33 +1,52 @@
-import { Monitor, ShoppingCart, RefreshCcw, Rocket } from "lucide-react";
+import { Monitor, Search, Rocket, Zap, ArrowUpRight } from "lucide-react";
 
 const services = [
-  { icon: Monitor, title: "Website Design & Development", desc: "A professionally designed website that loads fast, looks great on every device, and is built to convert visitors into clients." },
-  { icon: ShoppingCart, title: "E-commerce Stores", desc: "Sell online with a secure storefront, smooth checkout, and integrations for payments, shipping, and inventory." },
-  { icon: RefreshCcw, title: "Website Redesign", desc: "Transform a slow, dated site into a modern, mobile-first experience that ranks well and earns trust." },
-  { icon: Rocket, title: "Landing Pages", desc: "High-converting single pages for product launches, ads, and lead generation, shipped in days, not weeks." },
+  {
+    icon: Monitor,
+    title: "Website Design & Development",
+    desc: "Custom-built sites that look great, load fast, and convert visitors into clients.",
+  },
+  {
+    icon: Search,
+    title: "Google Business Optimisation",
+    desc: "Show up in local search and Maps with a fully optimised Business Profile.",
+  },
+  {
+    icon: Rocket,
+    title: "Landing Page Builds",
+    desc: "High-converting single pages for product launches, ads, and lead gen.",
+  },
+  {
+    icon: Zap,
+    title: "SEO & Speed Optimisation",
+    desc: "Technical SEO, Core Web Vitals fixes, and content tuning for organic growth.",
+  },
 ];
 
 const Services = () => (
-  <section id="services" className="py-20 md:py-28">
+  <section id="services" className="py-24 md:py-32 bg-white">
     <div className="container">
       <div className="max-w-2xl">
-        <p className="text-sm font-semibold text-primary uppercase tracking-wider">What we build</p>
-        <h2 className="mt-3 text-3xl md:text-4xl font-semibold text-surface-dark">
-          Websites built for the outcomes you actually care about
+        <p className="font-body text-[13px] uppercase tracking-[0.18em] text-mute">Services</p>
+        <h2 className="mt-3 font-heading font-bold text-3xl md:text-[42px] text-ink leading-tight">
+          Everything your business needs to win online.
         </h2>
       </div>
 
-      <div className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+      <div className="mt-12 grid gap-5 sm:grid-cols-2">
         {services.map(({ icon: Icon, title, desc }) => (
           <article
             key={title}
-            className="group p-6 bg-card border rounded-xl shadow-card hover:shadow-card-hover hover:-translate-y-1 transition-base"
+            className="group bg-white border border-line rounded-lg p-8 transition-base hover:-translate-y-1 hover:shadow-card-hover"
           >
-            <div className="inline-flex h-12 w-12 items-center justify-center rounded-lg bg-primary/10 text-primary group-hover:bg-primary group-hover:text-primary-foreground transition-base">
-              <Icon className="h-6 w-6" />
+            <div className="flex items-start justify-between">
+              <div className="h-10 w-10 rounded-md border border-line flex items-center justify-center text-ink">
+                <Icon className="h-5 w-5" strokeWidth={1.6} />
+              </div>
+              <ArrowUpRight className="h-5 w-5 text-mute group-hover:text-ink transition-base" />
             </div>
-            <h3 className="mt-5 text-lg font-semibold text-surface-dark">{title}</h3>
-            <p className="mt-2 text-sm text-muted-foreground leading-relaxed">{desc}</p>
+            <h3 className="mt-6 font-heading font-bold text-xl text-ink">{title}</h3>
+            <p className="mt-2 font-body text-[15px] text-mute leading-relaxed">{desc}</p>
           </article>
         ))}
       </div>

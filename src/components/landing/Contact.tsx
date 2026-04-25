@@ -1,141 +1,103 @@
 import { useState } from "react";
-import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
-import { Textarea } from "@/components/ui/textarea";
-import { Label } from "@/components/ui/label";
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
-import { CheckCircle2, Phone, Mail, MapPin, MessageCircle } from "lucide-react";
+import { CheckCircle2 } from "lucide-react";
 import { toast } from "sonner";
 
+/**
+ * Lead capture — dark section with white form card.
+ * Honeypot for spam, inline success state, no redirect.
+ */
 const Contact = () => {
   const [submitting, setSubmitting] = useState(false);
   const [done, setDone] = useState(false);
+  const [error, setError] = useState<string | null>(null);
 
   const onSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    const data = new FormData(e.currentTarget);
-    if (data.get("website")) return; // honeypot
+    setError(null);
+    const fd = new FormData(e.currentTarget);
+    if (fd.get("_honey")) return; // silent honeypot
     setSubmitting(true);
-    await new Promise((r) => setTimeout(r, 900));
-    setSubmitting(false);
-    setDone(true);
-    toast.success("Request sent! We'll reply within 24 hours.");
+    try {
+      // Replace endpoint at deploy time
+      // await fetch("https://formspree.io/f/REPLACE_WITH_YOUR_ID", { ... });
+      await new Promise((r) => setTimeout(r, 800));
+      setDone(true);
+      toast.success("Request received — we’ll reply within one business day.");
+    } catch {
+      setError("Something went wrong. Please try again or email hello@devcraftstudio.com.");
+    } finally {
+      setSubmitting(false);
+    }
   };
 
   return (
-    <section id="contact" className="py-20 md:py-28">
-      <div className="container grid gap-12 lg:grid-cols-2">
-        <div>
-          <p className="text-sm font-semibold text-primary uppercase tracking-wider">Contact</p>
-          <h2 className="mt-3 text-3xl md:text-4xl font-semibold text-surface-dark">
-            Tell us about your project
-          </h2>
-          <p className="mt-4 text-muted-foreground max-w-md">
-            Share a few details and we'll come back within 24 hours with a clear plan, timeline, and quote. No pressure, no spam.
-          </p>
+    <section id="contact" className="py-24 md:py-32 bg-ink text-white">
+      <div className="container max-w-3xl text-center">
+        <p className="font-body text-[13px] uppercase tracking-[0.18em] text-white/50">Start a project</p>
+        <h2 className="mt-3 font-display text-4xl md:text-5xl text-white leading-tight">
+          Let us build your next client-generating website.
+        </h2>
+        <p className="mt-4 font-body text-[16px] text-white/60 max-w-xl mx-auto">
+          Fill out the form and we’ll reply within one business day with a clear plan, timeline, and quote.
+        </p>
 
-          <ul className="mt-8 space-y-4">
-            <li className="flex items-start gap-3">
-              <Phone className="h-5 w-5 text-primary mt-0.5" />
-              <div>
-                <div className="text-sm text-muted-foreground">Call us</div>
-                <a href="tel:+919876543210" className="font-medium text-surface-dark hover:text-primary">+91 98765 43210</a>
-              </div>
-            </li>
-            <li className="flex items-start gap-3">
-              <MessageCircle className="h-5 w-5 text-primary mt-0.5" />
-              <div>
-                <div className="text-sm text-muted-foreground">WhatsApp</div>
-                <a href="https://wa.me/919876543210" target="_blank" rel="noreferrer" className="font-medium text-surface-dark hover:text-primary">Chat now</a>
-              </div>
-            </li>
-            <li className="flex items-start gap-3">
-              <Mail className="h-5 w-5 text-primary mt-0.5" />
-              <div>
-                <div className="text-sm text-muted-foreground">Email</div>
-                <a href="mailto:hello@devcraftstudio.com" className="font-medium text-surface-dark hover:text-primary">hello@devcraftstudio.com</a>
-              </div>
-            </li>
-            <li className="flex items-start gap-3">
-              <MapPin className="h-5 w-5 text-primary mt-0.5" />
-              <div>
-                <div className="text-sm text-muted-foreground">Studio</div>
-                <div className="font-medium text-surface-dark">4th Floor, Prestige Tower, Anna Salai, Chennai 600002</div>
-              </div>
-            </li>
-          </ul>
-        </div>
-
-        <div className="bg-card border rounded-2xl p-6 md:p-8 shadow-card">
+        <div className="mt-12 bg-white text-ink rounded-lg p-6 md:p-10 text-left max-w-2xl mx-auto">
           {done ? (
             <div className="text-center py-12">
-              <div className="mx-auto h-14 w-14 rounded-full bg-success/15 flex items-center justify-center">
-                <CheckCircle2 className="h-7 w-7 text-success" />
+              <div className="mx-auto h-14 w-14 rounded-full bg-ink flex items-center justify-center">
+                <CheckCircle2 className="h-7 w-7 text-white" />
               </div>
-              <h3 className="mt-4 text-xl font-semibold text-surface-dark">Thanks — we got it!</h3>
-              <p className="mt-2 text-muted-foreground">We'll reply within 24 hours with next steps.</p>
+              <h3 className="mt-4 font-heading font-bold text-xl text-ink">Thanks — we got it.</h3>
+              <p className="mt-2 font-body text-[15px] text-mute">
+                We’ll reply within one business day with next steps.
+              </p>
             </div>
           ) : (
             <form onSubmit={onSubmit} className="space-y-4">
-              <input type="text" name="website" tabIndex={-1} autoComplete="off" className="hidden" aria-hidden />
+              <input type="text" name="_honey" tabIndex={-1} autoComplete="off" className="hidden" aria-hidden />
 
               <div className="grid sm:grid-cols-2 gap-4">
-                <div>
-                  <Label htmlFor="name">Full name *</Label>
-                  <Input id="name" name="name" required aria-required className="mt-1.5" placeholder="Your name" />
-                </div>
-                <div>
-                  <Label htmlFor="phone">Phone *</Label>
-                  <Input id="phone" name="phone" type="tel" required aria-required className="mt-1.5" placeholder="+91 98765 43210" />
-                </div>
+                <Field id="name" label="Full name *" name="name" required minLength={2} placeholder="Your name" />
+                <Field id="phone" label="Phone *" name="phone" type="tel" required placeholder="+91 98765 43210" pattern="[0-9+\s\-()]{8,}" />
+              </div>
+
+              <Field id="email" label="Business email *" name="email" type="email" required placeholder="you@business.com" />
+              <Field id="website" label="Website (optional)" name="website" type="url" placeholder="https://" />
+
+              <div className="grid sm:grid-cols-2 gap-4">
+                <Select id="projectType" label="Project type *" name="projectType" required options={[
+                  "New Website", "Redesign", "Landing Page", "Google Business Setup", "Not sure",
+                ]} />
+                <Select id="budget" label="Budget range" name="budget" options={[
+                  "Under ₹25,000", "₹25,000 – ₹60,000", "₹60,000 – ₹1.5L", "₹1.5L+",
+                ]} />
               </div>
 
               <div>
-                <Label htmlFor="email">Email *</Label>
-                <Input id="email" name="email" type="email" required aria-required className="mt-1.5" placeholder="you@business.com" />
+                <label htmlFor="message" className="block font-body text-[13px] font-medium text-ink">
+                  Tell us about your project
+                </label>
+                <textarea
+                  id="message"
+                  name="message"
+                  rows={4}
+                  placeholder="What are you building, and what does success look like?"
+                  className="mt-1.5 w-full rounded-md border border-line px-4 py-3 font-body text-[15px] text-ink placeholder:text-mute/70 focus:outline-none focus:border-ink"
+                />
               </div>
 
-              <div>
-                <Label htmlFor="business">Business type</Label>
-                <Select name="business">
-                  <SelectTrigger id="business" className="mt-1.5"><SelectValue placeholder="Select one" /></SelectTrigger>
-                  <SelectContent>
-                    <SelectItem value="retail">Retail Shop</SelectItem>
-                    <SelectItem value="restaurant">Restaurant or Cafe</SelectItem>
-                    <SelectItem value="healthcare">Healthcare or Clinic</SelectItem>
-                    <SelectItem value="services">Professional Services</SelectItem>
-                    <SelectItem value="ecommerce">E-commerce</SelectItem>
-                    <SelectItem value="startup">Startup</SelectItem>
-                    <SelectItem value="ngo">NGO or Education</SelectItem>
-                    <SelectItem value="other">Other</SelectItem>
-                  </SelectContent>
-                </Select>
-              </div>
+              {error && <p className="text-sm text-destructive">{error}</p>}
 
-              <div>
-                <Label htmlFor="message">Tell us about your project *</Label>
-                <Textarea id="message" name="message" rows={4} required aria-required className="mt-1.5" placeholder="What are you building, and what does success look like?" />
-              </div>
-
-              <div>
-                <Label htmlFor="source">How did you find us?</Label>
-                <Select name="source">
-                  <SelectTrigger id="source" className="mt-1.5"><SelectValue placeholder="Select one" /></SelectTrigger>
-                  <SelectContent>
-                    <SelectItem value="google">Google Search</SelectItem>
-                    <SelectItem value="maps">Google Maps</SelectItem>
-                    <SelectItem value="instagram">Instagram</SelectItem>
-                    <SelectItem value="facebook">Facebook</SelectItem>
-                    <SelectItem value="referral">Referral from a friend</SelectItem>
-                    <SelectItem value="other">Other</SelectItem>
-                  </SelectContent>
-                </Select>
-              </div>
-
-              <Button type="submit" disabled={submitting} className="w-full h-12 text-base">
-                {submitting ? "Sending..." : "Send My Request"}
-              </Button>
-              <p className="text-xs text-muted-foreground text-center">We reply within 24 hours. Your details stay private.</p>
+              <button
+                type="submit"
+                disabled={submitting}
+                className="w-full h-12 rounded-md bg-ink text-white font-heading font-bold text-[15px] transition-base hover:bg-primary-hover disabled:opacity-60"
+              >
+                {submitting ? "Sending…" : "Send My Project Details"}
+              </button>
+              <p className="text-center font-body text-[13px] text-mute">
+                We never share your data. No spam, ever.
+              </p>
             </form>
           )}
         </div>
@@ -143,5 +105,42 @@ const Contact = () => {
     </section>
   );
 };
+
+/* ---------- small field helpers ---------- */
+
+type FieldProps = React.InputHTMLAttributes<HTMLInputElement> & { label: string; id: string };
+const Field = ({ label, id, ...rest }: FieldProps) => (
+  <div>
+    <label htmlFor={id} className="block font-body text-[13px] font-medium text-ink">
+      {label}
+    </label>
+    <input
+      id={id}
+      {...rest}
+      className="mt-1.5 w-full rounded-md border border-line px-4 py-3 font-body text-[15px] text-ink placeholder:text-mute/70 focus:outline-none focus:border-ink"
+    />
+  </div>
+);
+
+type SelectProps = { id: string; label: string; name: string; required?: boolean; options: string[] };
+const Select = ({ id, label, name, required, options }: SelectProps) => (
+  <div>
+    <label htmlFor={id} className="block font-body text-[13px] font-medium text-ink">
+      {label}
+    </label>
+    <select
+      id={id}
+      name={name}
+      required={required}
+      defaultValue=""
+      className="mt-1.5 w-full rounded-md border border-line bg-white px-4 py-3 font-body text-[15px] text-ink focus:outline-none focus:border-ink"
+    >
+      <option value="" disabled>Select one</option>
+      {options.map((o) => (
+        <option key={o} value={o}>{o}</option>
+      ))}
+    </select>
+  </div>
+);
 
 export default Contact;

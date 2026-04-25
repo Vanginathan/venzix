@@ -36,12 +36,14 @@ export default {
           DEFAULT: "hsl(var(--success))",
           foreground: "hsl(var(--success-foreground))",
         },
-        surface: {
-          dark: "hsl(var(--surface-dark))",
-          "dark-foreground": "hsl(var(--surface-dark-foreground))",
-          mid: "hsl(var(--surface-mid))",
-          soft: "hsl(var(--surface-soft))",
-        },
+        ink: "hsl(var(--ink))",
+        body: "hsl(var(--body))",
+        mute: "hsl(var(--mute))",
+        line: "hsl(var(--line))",
+        surface: "hsl(var(--surface))",
+        tile: "hsl(var(--tile))",
+        badge: "hsl(var(--badge))",
+        gold: "hsl(var(--gold))",
         muted: {
           DEFAULT: "hsl(var(--muted))",
           foreground: "hsl(var(--muted-foreground))",
@@ -70,9 +72,17 @@ export default {
         },
       },
       borderRadius: {
-        lg: "var(--radius)",
-        md: "calc(var(--radius) - 2px)",
-        sm: "calc(var(--radius) - 4px)",
+        lg: "1rem",                  /* cards: 16px */
+        md: "var(--radius)",         /* inputs: 10px */
+        sm: "0.5rem",
+        tile: "0.75rem",             /* mosaic: 12px */
+        pill: "9999px",
+      },
+      fontFamily: {
+        display: ["'Instrument Serif'", "Georgia", "serif"],
+        heading: ["Syne", "system-ui", "sans-serif"],
+        body: ["'DM Sans'", "system-ui", "sans-serif"],
+        monostat: ["'JetBrains Mono'", "ui-monospace", "monospace"],
       },
       keyframes: {
         "accordion-down": {

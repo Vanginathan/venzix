@@ -1,12 +1,11 @@
 import { useEffect, useState } from "react";
 import { Menu, X } from "lucide-react";
-import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 
 const links = [
   { href: "#services", label: "Services" },
-  { href: "#process", label: "Process" },
   { href: "#work", label: "Work" },
+  { href: "#process", label: "Process" },
   { href: "#pricing", label: "Pricing" },
   { href: "#faq", label: "FAQ" },
 ];
@@ -14,76 +13,47 @@ const links = [
 const Navbar = () => {
   const [scrolled, setScrolled] = useState(false);
   const [open, setOpen] = useState(false);
-  const [active, setActive] = useState<string>("hero");
 
   useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 60);
+    const onScroll = () => setScrolled(window.scrollY > 80);
     onScroll();
     window.addEventListener("scroll", onScroll, { passive: true });
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
-  useEffect(() => {
-    const sections = document.querySelectorAll("section[id]");
-    const obs = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((e) => {
-          if (e.isIntersecting) setActive(e.target.id);
-        });
-      },
-      { threshold: 0.3 }
-    );
-    sections.forEach((s) => obs.observe(s));
-    return () => obs.disconnect();
-  }, []);
-
   return (
     <header
       className={cn(
-        "fixed top-0 inset-x-0 z-50 transition-base",
-        scrolled
-          ? "h-[60px] bg-background/95 backdrop-blur shadow-nav"
-          : "h-[72px] bg-transparent"
+        "fixed top-0 inset-x-0 z-50 bg-white transition-base border-b",
+        scrolled ? "border-line shadow-nav" : "border-transparent"
       )}
     >
-      <div className="container h-full flex items-center justify-between">
-        <a href="#hero" className="flex items-center gap-2 font-bold text-xl">
-          <span className="h-3 w-3 rounded-sm bg-primary" />
-          <span className={cn(scrolled ? "text-surface-dark" : "text-surface-dark-foreground")}>
-            DevCraft<span className="text-primary">.</span>
-          </span>
+      <div className="container h-[68px] flex items-center justify-between">
+        <a href="#hero" className="font-heading font-bold text-[18px] text-ink tracking-tight">
+          DevCraft<span className="text-mute">/studio</span>
         </a>
 
-        <nav className="hidden md:flex items-center gap-8">
+        <nav className="hidden md:flex items-center gap-8 font-body">
           {links.map((l) => (
             <a
               key={l.href}
               href={l.href}
-              className={cn(
-                "text-sm font-medium transition-base hover:text-primary",
-                active === l.href.slice(1)
-                  ? "text-primary"
-                  : scrolled
-                  ? "text-foreground"
-                  : "text-surface-dark-foreground/90"
-              )}
+              className="text-[14px] text-body hover:text-ink transition-base"
             >
               {l.label}
             </a>
           ))}
         </nav>
 
-        <div className="hidden md:block">
-          <Button asChild variant="default" size="sm">
-            <a href="#contact">Book a Free Call</a>
-          </Button>
-        </div>
+        <a
+          href="#contact"
+          className="hidden md:inline-flex items-center justify-center rounded-pill bg-ink text-white px-5 h-10 font-heading font-semibold text-[13px] transition-base hover:bg-primary-hover"
+        >
+          Book a Call
+        </a>
 
         <button
-          className={cn(
-            "md:hidden p-2 rounded-md",
-            scrolled ? "text-surface-dark" : "text-surface-dark-foreground"
-          )}
+          className="md:hidden p-2 text-ink"
           onClick={() => setOpen((v) => !v)}
           aria-label="Toggle menu"
           aria-expanded={open}
@@ -93,21 +63,25 @@ const Navbar = () => {
       </div>
 
       {open && (
-        <div className="md:hidden absolute top-full inset-x-0 bg-background border-b shadow-nav">
-          <nav className="container flex flex-col py-4 gap-1">
+        <div className="md:hidden fixed inset-0 top-[68px] bg-white">
+          <nav className="container flex flex-col py-6 gap-1 font-body">
             {links.map((l) => (
               <a
                 key={l.href}
                 href={l.href}
                 onClick={() => setOpen(false)}
-                className="px-2 py-3 text-base font-medium text-foreground hover:bg-secondary rounded-md"
+                className="px-2 py-4 text-lg text-ink border-b border-line"
               >
                 {l.label}
               </a>
             ))}
-            <Button asChild className="mt-2">
-              <a href="#contact" onClick={() => setOpen(false)}>Book a Free Call</a>
-            </Button>
+            <a
+              href="#contact"
+              onClick={() => setOpen(false)}
+              className="mt-6 inline-flex items-center justify-center rounded-pill bg-ink text-white px-6 h-12 font-heading font-semibold"
+            >
+              Book a Call
+            </a>
           </nav>
         </div>
       )}
