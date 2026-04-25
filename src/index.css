@@ -4,56 +4,55 @@
 
 @layer base {
   :root {
-    --background: 0 0% 100%;
-    --foreground: 0 0% 20%;
+    /* Editorial minimal palette per PRD */
+    --background: 0 0% 100%;            /* #FFFFFF */
+    --foreground: 0 0% 27%;             /* #444444 body */
 
     --card: 0 0% 100%;
-    --card-foreground: 0 0% 20%;
+    --card-foreground: 0 0% 7%;         /* ink on cards */
 
     --popover: 0 0% 100%;
-    --popover-foreground: 0 0% 20%;
+    --popover-foreground: 0 0% 7%;
 
-    /* Brand */
-    --primary: 215 73% 22%;            /* accent #0F3460 */
+    /* Brand: monochrome ink */
+    --primary: 0 0% 7%;                 /* #111111 ink */
     --primary-foreground: 0 0% 100%;
-    --primary-hover: 265 43% 36%;      /* #533483 */
+    --primary-hover: 0 0% 17%;          /* lifted ink */
 
-    --secondary: 210 17% 98%;          /* off-white */
-    --secondary-foreground: 240 30% 14%;
+    --secondary: 0 0% 97%;              /* #F7F7F7 surface */
+    --secondary-foreground: 0 0% 7%;
 
-    --muted: 210 17% 98%;
-    --muted-foreground: 0 0% 40%;      /* #666 */
+    --muted: 0 0% 97%;
+    --muted-foreground: 0 0% 53%;       /* #888888 */
 
-    --accent: 265 43% 36%;
-    --accent-foreground: 0 0% 100%;
+    --accent: 0 0% 94%;                 /* #F0F0F0 badge */
+    --accent-foreground: 0 0% 7%;
 
-    --destructive: 0 84% 60%;
+    --destructive: 0 72% 51%;
     --destructive-foreground: 0 0% 100%;
 
     --success: 142 71% 45%;
     --success-foreground: 0 0% 100%;
 
-    --border: 0 0% 88%;                /* #E0E0E0 */
-    --input: 0 0% 88%;
-    --ring: 215 73% 22%;
+    --border: 0 0% 90%;                 /* #E5E5E5 */
+    --input: 0 0% 90%;
+    --ring: 0 0% 7%;
 
-    /* Surfaces */
-    --surface-dark: 240 30% 14%;       /* #1A1A2E */
-    --surface-dark-foreground: 0 0% 100%;
-    --surface-mid: 222 49% 17%;        /* #16213E */
-    --surface-soft: 210 17% 98%;       /* #F8F9FA */
+    /* Custom semantic tokens */
+    --ink: 0 0% 7%;                     /* #111 */
+    --body: 0 0% 27%;                   /* #444 */
+    --mute: 0 0% 53%;                   /* #888 */
+    --line: 0 0% 90%;                   /* #E5E5E5 */
+    --surface: 0 0% 97%;                /* #F7F7F7 */
+    --tile: 0 0% 96%;                   /* #F4F4F4 mosaic placeholder */
+    --badge: 0 0% 94%;                  /* #F0F0F0 */
+    --gold: 38 92% 50%;                 /* #F59E0B testimonial stars */
 
-    --radius: 0.5rem;
+    --radius: 0.625rem;                 /* 10px form inputs */
 
-    /* Effects */
-    --shadow-card: 0 1px 2px hsl(0 0% 0% / 0.04);
-    --shadow-card-hover: 0 8px 24px hsl(0 0% 0% / 0.08);
-    --shadow-nav: 0 2px 20px hsl(0 0% 0% / 0.08);
-    --gradient-hero: radial-gradient(at 20% 20%, hsl(215 73% 22%) 0px, transparent 50%),
-                     radial-gradient(at 80% 0%, hsl(265 43% 36%) 0px, transparent 50%),
-                     radial-gradient(at 50% 100%, hsl(222 49% 17%) 0px, transparent 50%),
-                     linear-gradient(135deg, hsl(240 30% 14%), hsl(215 73% 22%));
-    --transition-base: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+    --shadow-card-hover: 0 8px 32px hsl(0 0% 0% / 0.08);
+    --shadow-nav: 0 2px 16px hsl(0 0% 0% / 0.06);
+    --transition-base: all 0.2s ease;
 
     --sidebar-background: 0 0% 98%;
     --sidebar-foreground: 240 5.3% 26.1%;
@@ -71,18 +70,29 @@
   html { scroll-behavior: smooth; }
   body {
     @apply bg-background text-foreground antialiased;
-    font-family: 'Inter', system-ui, -apple-system, sans-serif;
-    font-feature-settings: "cv02","cv03","cv04","cv11";
+    font-family: 'DM Sans', system-ui, -apple-system, sans-serif;
+    font-feature-settings: "ss01";
   }
-  h1, h2, h3, h4 { font-family: 'Inter', sans-serif; letter-spacing: -0.02em; }
+  h1, h2, h3, h4 { font-family: 'Syne', system-ui, sans-serif; letter-spacing: -0.01em; }
+  .font-display { font-family: 'Instrument Serif', Georgia, serif; font-weight: 400; letter-spacing: -0.02em; }
+  .font-heading { font-family: 'Syne', system-ui, sans-serif; }
+  .font-body { font-family: 'DM Sans', system-ui, sans-serif; }
+  .font-mono-stat { font-family: 'JetBrains Mono', ui-monospace, monospace; }
 }
 
 @layer utilities {
-  .bg-hero-mesh { background: var(--gradient-hero); }
-  .shadow-card { box-shadow: var(--shadow-card); }
   .shadow-card-hover { box-shadow: var(--shadow-card-hover); }
   .shadow-nav { box-shadow: var(--shadow-nav); }
   .transition-base { transition: var(--transition-base); }
+
+  .text-ink { color: hsl(var(--ink)); }
+  .text-body { color: hsl(var(--body)); }
+  .text-mute { color: hsl(var(--mute)); }
+  .bg-ink { background-color: hsl(var(--ink)); }
+  .bg-surface { background-color: hsl(var(--surface)); }
+  .bg-tile { background-color: hsl(var(--tile)); }
+  .bg-badge { background-color: hsl(var(--badge)); }
+  .border-line { border-color: hsl(var(--line)); }
 
   @keyframes pulse-dot {
     0%, 100% { opacity: 1; transform: scale(1); }
@@ -90,21 +100,26 @@
   }
   .animate-pulse-dot { animation: pulse-dot 1.6s ease-in-out infinite; }
 
-  @keyframes bounce-down {
-    0%, 100% { transform: translateY(0); }
-    50% { transform: translateY(8px); }
-  }
-  .animate-bounce-down { animation: bounce-down 2s ease-in-out infinite; }
-
   @keyframes marquee {
     from { transform: translateX(0); }
     to { transform: translateX(-50%); }
   }
   .animate-marquee { animation: marquee 25s linear infinite; }
 
-  @keyframes fade-in-up {
-    from { opacity: 0; transform: translateY(12px); }
+  /* Hero mosaic: stagger fade + scale in */
+  @keyframes tile-in {
+    from { opacity: 0; transform: scale(0.96); }
+    to   { opacity: 1; transform: scale(1); }
+  }
+  .tile-in { animation: tile-in 0.7s cubic-bezier(0.22, 1, 0.36, 1) both; }
+
+  /* Scroll reveal */
+  .animate-up { opacity: 0; transform: translateY(24px); transition: opacity 0.6s ease, transform 0.6s ease; }
+  .animate-up.is-visible { opacity: 1; transform: translateY(0); }
+
+  @keyframes fade-up {
+    from { opacity: 0; transform: translateY(16px); }
     to   { opacity: 1; transform: translateY(0); }
   }
-  .animate-fade-in-up { animation: fade-in-up 0.5s ease-out both; }
+  .animate-fade-up { animation: fade-up 0.6s ease-out both; }
 }
