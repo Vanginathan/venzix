@@ -1,9 +1,7 @@
-import p1 from "@/assets/tile-hero-ui.jpg";
-import p2 from "@/assets/tile-dashboard.jpg";
-import p3 from "@/assets/tile-typography.jpg";
-import p4 from "@/assets/tile-ecommerce.jpg";
-import p5 from "@/assets/tile-app.jpg";
-import p6 from "@/assets/tile-palette.jpg";
+import p1 from "@/assets/tile-ref-1.png";
+import p2 from "@/assets/tile-ref-2.png";
+import p3 from "@/assets/tile-ref-3.png";
+import p4 from "@/assets/tile-ref-4.png";
 
 /**
  * Hero — Editorial mosaic with award-winning website tiles.
@@ -16,12 +14,10 @@ import p6 from "@/assets/tile-palette.jpg";
 
 // Image tiles — strictly side columns only (cols 1,2,6,7).
 const tiles: { col: number; row: number; src: string; alt: string }[] = [
-  { col: 1, row: 2, src: p1, alt: "Award-winning website hero UI" },
-  { col: 2, row: 3, src: p2, alt: "Analytics dashboard interface" },
-  { col: 1, row: 4, src: p3, alt: "Editorial typography specimen" },
-  { col: 7, row: 2, src: p4, alt: "E-commerce product page UI" },
-  { col: 6, row: 3, src: p5, alt: "Mobile app onboarding mockup" },
-  { col: 7, row: 4, src: p6, alt: "Design system color palette" },
+  { col: 1, row: 2, src: p1, alt: "Luxury interior design website hero" },
+  { col: 2, row: 3, src: p2, alt: "Digital agency landing page" },
+  { col: 6, row: 3, src: p3, alt: "Salon website hero layout" },
+  { col: 7, row: 2, src: p4, alt: "Fencing services landing page" },
 ];
 
 const stats = [
