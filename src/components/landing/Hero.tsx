@@ -1,24 +1,27 @@
-import p1 from "@/assets/tile-website.jpg";
-import p2 from "@/assets/tile-code.jpg";
-import p3 from "@/assets/tile-wireframe.jpg";
-import p4 from "@/assets/tile-mobile.jpg";
-import p5 from "@/assets/tile-designsystem.jpg";
+import p1 from "@/assets/tile-hero-ui.jpg";
+import p2 from "@/assets/tile-dashboard.jpg";
+import p3 from "@/assets/tile-typography.jpg";
+import p4 from "@/assets/tile-ecommerce.jpg";
+import p5 from "@/assets/tile-app.jpg";
+import p6 from "@/assets/tile-palette.jpg";
 
 /**
- * Hero — Editorial grid with scattered blurred portraits.
- * Background: subtle 6×5 grid of square placeholder tiles.
- * Overlay: 5 portraits at fixed grid cells (slightly larger than a cell, rounded).
- * Foreground: centered headline, badge, CTAs.
- * Below: stats row.
+ * Hero — Editorial mosaic with award-winning website tiles.
+ * Layout: 7-col × 5-row background grid of light placeholder tiles.
+ * Image tiles are constrained to the LEFT two columns (1-2) and
+ * the RIGHT two columns (6-7). The center column band (cols 3-5)
+ * is reserved for headline/CTA — never overlapped by tiles.
+ * No people / faces — only web design, UI, and editorial visuals.
  */
 
-// Portrait positions on the 6-col × 5-row grid (col, row, image, alt)
-const portraits: { col: number; row: number; src: string; alt: string }[] = [
-  { col: 2, row: 2, src: p1, alt: "Modern website on laptop" },
-  { col: 6, row: 2, src: p2, alt: "Code editor with HTML and CSS" },
-  { col: 2, row: 3, src: p3, alt: "UI wireframe canvas" },
-  { col: 6, row: 3, src: p4, alt: "Mobile app interface mockup" },
-  { col: 4, row: 4, src: p5, alt: "Design system typography and color palette" },
+// Image tiles — strictly side columns only (cols 1,2,6,7).
+const tiles: { col: number; row: number; src: string; alt: string }[] = [
+  { col: 1, row: 2, src: p1, alt: "Award-winning website hero UI" },
+  { col: 2, row: 3, src: p2, alt: "Analytics dashboard interface" },
+  { col: 1, row: 4, src: p3, alt: "Editorial typography specimen" },
+  { col: 7, row: 2, src: p4, alt: "E-commerce product page UI" },
+  { col: 6, row: 3, src: p5, alt: "Mobile app onboarding mockup" },
+  { col: 7, row: 4, src: p6, alt: "Design system color palette" },
 ];
 
 const stats = [
@@ -30,25 +33,31 @@ const stats = [
 
 const Hero = () => (
   <section id="hero" className="relative w-full bg-white rounded-[28px] overflow-hidden">
-    {/* Background placeholder grid */}
+    {/* Background placeholder grid (7 cols × 5 rows). Side columns hold image tiles, center band stays clear. */}
     <div
       aria-hidden
-      className="absolute inset-0 grid gap-3 md:gap-4 p-6 md:p-10 pt-28 md:pt-32"
+      className="absolute inset-0 hidden md:grid gap-3 md:gap-4 p-6 md:p-10 pt-28 md:pt-32"
       style={{
         gridTemplateColumns: "repeat(7, 1fr)",
         gridTemplateRows: "repeat(5, minmax(80px, 1fr))",
       }}
     >
-      {Array.from({ length: 7 * 5 }).map((_, i) => (
-        <div
-          key={i}
-          className="rounded-2xl bg-tile/60 border border-line/60 tile-in"
-          style={{ animationDelay: `${i * 30}ms` }}
-        />
-      ))}
+      {Array.from({ length: 7 * 5 }).map((_, i) => {
+        const col = (i % 7) + 1;
+        // Hide the center band (cols 3-5) entirely so nothing sits behind text.
+        const inCenter = col >= 3 && col <= 5;
+        if (inCenter) return <div key={i} />;
+        return (
+          <div
+            key={i}
+            className="rounded-2xl bg-tile/60 border border-line/60 tile-in"
+            style={{ animationDelay: `${i * 30}ms` }}
+          />
+        );
+      })}
     </div>
 
-    {/* Scattered portraits — desktop only for clarity */}
+    {/* Image tiles — only in side columns 1,2,6,7 */}
     <div
       aria-hidden
       className="absolute inset-0 hidden md:grid gap-3 md:gap-4 p-6 md:p-10 pt-28 md:pt-32 pointer-events-none"
@@ -57,26 +66,20 @@ const Hero = () => (
         gridTemplateRows: "repeat(5, minmax(80px, 1fr))",
       }}
     >
-      {portraits.map((p, i) => (
+      {tiles.map((t, i) => (
         <div
           key={i}
-          className="rounded-2xl overflow-hidden shadow-card-hover tile-in"
+          className="rounded-2xl overflow-hidden shadow-card-hover tile-in bg-white"
           style={{
-            gridColumn: `${p.col} / span 1`,
-            gridRow: `${p.row} / span 1`,
+            gridColumn: `${t.col} / span 1`,
+            gridRow: `${t.row} / span 1`,
             animationDelay: `${300 + i * 120}ms`,
           }}
         >
-          <img src={p.src} alt={p.alt} className="h-full w-full object-cover" />
+          <img src={t.src} alt={t.alt} loading="lazy" className="h-full w-full object-cover" />
         </div>
       ))}
     </div>
-
-    {/* Soft white scrim for legibility */}
-    <div
-      aria-hidden
-      className="absolute inset-0 bg-gradient-to-b from-white/60 via-white/85 to-white/60 pointer-events-none"
-    />
 
     {/* Foreground content */}
     <div className="relative z-10 px-6 pt-32 md:pt-40 pb-12 md:pb-16">
