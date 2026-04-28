@@ -1,27 +1,24 @@
+import p1 from "@/assets/portrait-1.jpg";
+import p2 from "@/assets/portrait-2.jpg";
+import p3 from "@/assets/portrait-3.jpg";
+import p4 from "@/assets/portrait-4.jpg";
+import p5 from "@/assets/portrait-5.jpg";
+
 /**
- * Hero — Unique asymmetric scatter.
- * Hand-placed soft tiles of varied sizes & subtle rotations frame the
- * centered headline. No repeating grid — each tile is intentional.
+ * Hero — Editorial grid with scattered blurred portraits.
+ * Background: subtle 6×5 grid of square placeholder tiles.
+ * Overlay: 5 portraits at fixed grid cells (slightly larger than a cell, rounded).
+ * Foreground: centered headline, badge, CTAs.
+ * Below: stats row.
  */
 
-// Decorative tiles positioned with %-based coords so they scale with the section.
-// Each tile: x/y are top-left %, w/h are size %, r is rotation deg, o is opacity.
-type Tile = { x: number; y: number; w: number; h: number; r: number; o: number; d: number };
-const TILES: Tile[] = [
-  // Left cluster
-  { x: 4,  y: 18, w: 9,  h: 14, r: -6, o: 0.55, d: 0   },
-  { x: 2,  y: 48, w: 12, h: 18, r:  4, o: 0.7,  d: 80  },
-  { x: 14, y: 70, w: 7,  h: 11, r: -3, o: 0.45, d: 160 },
-  // Right cluster
-  { x: 86, y: 14, w: 10, h: 15, r:  5, o: 0.6,  d: 40  },
-  { x: 80, y: 44, w: 14, h: 20, r: -4, o: 0.75, d: 120 },
-  { x: 90, y: 74, w: 6,  h: 10, r:  3, o: 0.4,  d: 200 },
-  // Top accents
-  { x: 26, y: 6,  w: 5,  h: 8,  r:  8, o: 0.35, d: 220 },
-  { x: 70, y: 8,  w: 4,  h: 7,  r: -7, o: 0.35, d: 240 },
-  // Bottom subtle
-  { x: 38, y: 88, w: 6,  h: 9,  r: -2, o: 0.3,  d: 260 },
-  { x: 58, y: 90, w: 5,  h: 8,  r:  4, o: 0.3,  d: 280 },
+// Portrait positions on the 6-col × 5-row grid (col, row, image, alt)
+const portraits: { col: number; row: number; src: string; alt: string }[] = [
+  { col: 2, row: 2, src: p1, alt: "Warm portrait" },
+  { col: 6, row: 2, src: p2, alt: "Blue portrait" },
+  { col: 2, row: 3, src: p3, alt: "Silhouette portrait" },
+  { col: 6, row: 3, src: p4, alt: "Teal portrait" },
+  { col: 4, row: 4, src: p5, alt: "Warm crop portrait" },
 ];
 
 const stats = [
@@ -33,53 +30,53 @@ const stats = [
 
 const Hero = () => (
   <section id="hero" className="relative w-full bg-white rounded-[28px] overflow-hidden">
-    {/* Soft radial wash for depth */}
+    {/* Background placeholder grid */}
     <div
       aria-hidden
-      className="pointer-events-none absolute inset-0"
+      className="absolute inset-0 grid gap-3 md:gap-4 p-6 md:p-10 pt-28 md:pt-32"
       style={{
-        background:
-          "radial-gradient(ellipse 60% 50% at 50% 38%, hsl(var(--background)) 0%, transparent 70%)",
+        gridTemplateColumns: "repeat(7, 1fr)",
+        gridTemplateRows: "repeat(5, minmax(80px, 1fr))",
       }}
-    />
-
-    {/* Faint dotted texture — unique, not a grid of squares */}
-    <div
-      aria-hidden
-      className="pointer-events-none absolute inset-0 opacity-[0.35]"
-      style={{
-        backgroundImage:
-          "radial-gradient(hsl(var(--line)) 1px, transparent 1px)",
-        backgroundSize: "22px 22px",
-        maskImage:
-          "radial-gradient(ellipse 70% 60% at 50% 45%, transparent 35%, black 75%)",
-        WebkitMaskImage:
-          "radial-gradient(ellipse 70% 60% at 50% 45%, transparent 35%, black 75%)",
-      }}
-    />
-
-    {/* Hand-placed asymmetric tiles framing the headline */}
-    <div aria-hidden className="absolute inset-0 hidden md:block">
-      {TILES.map((t, i) => (
+    >
+      {Array.from({ length: 7 * 5 }).map((_, i) => (
         <div
           key={i}
-          className="absolute rounded-2xl bg-tile/60 border border-line/60 tile-in"
-          style={{
-            left: `${t.x}%`,
-            top: `${t.y}%`,
-            width: `${t.w}%`,
-            height: `${t.h}%`,
-            transform: `rotate(${t.r}deg)`,
-            opacity: t.o,
-            animationDelay: `${t.d}ms`,
-          }}
+          className="rounded-2xl bg-tile/60 border border-line/60 tile-in"
+          style={{ animationDelay: `${i * 30}ms` }}
         />
       ))}
-
-      {/* Two thin horizontal hairlines as editorial accents */}
-      <div className="absolute left-[6%] right-[6%] top-[8%] h-px bg-line/70" />
-      <div className="absolute left-[6%] right-[6%] bottom-[6%] h-px bg-line/70" />
     </div>
+
+    {/* Scattered portraits — desktop only for clarity */}
+    <div
+      aria-hidden
+      className="absolute inset-0 hidden md:grid gap-3 md:gap-4 p-6 md:p-10 pt-28 md:pt-32 pointer-events-none"
+      style={{
+        gridTemplateColumns: "repeat(7, 1fr)",
+        gridTemplateRows: "repeat(5, minmax(80px, 1fr))",
+      }}
+    >
+      {portraits.map((p, i) => (
+        <div
+          key={i}
+          className="rounded-2xl overflow-hidden shadow-card-hover tile-in"
+          style={{
+            gridColumn: `${p.col} / span 1`,
+            gridRow: `${p.row} / span 1`,
+            animationDelay: `${300 + i * 120}ms`,
+          }}
+        >
+          <img src={p.src} alt={p.alt} className="h-full w-full object-cover" />
+        </div>
+      ))}
+    </div>
+
+    {/* Soft white scrim for legibility */}
+    <div
+      aria-hidden
+      className="absolute inset-0 bg-gradient-to-b from-white/60 via-white/85 to-white/60 pointer-events-none"
+    />
 
     {/* Foreground content */}
     <div className="relative z-10 px-6 pt-32 md:pt-40 pb-12 md:pb-16">
