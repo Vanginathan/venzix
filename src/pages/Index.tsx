@@ -20,7 +20,9 @@ const Index = () => (
     </a>
     <Navbar />
     <main>
-      <Hero />
+      <div className="bg-shell px-3 md:px-6 pt-3 md:pt-4 pb-6 md:pb-10">
+        <Hero />
+      </div>
       <Proof />
       <Services />
       <Portfolio />
