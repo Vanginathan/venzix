@@ -4,21 +4,29 @@ import p3 from "@/assets/tile-ref-3.png";
 import p4 from "@/assets/tile-ref-4.png";
 
 /**
- * Hero — Editorial mosaic with award-winning website tiles.
- * Layout: 7-col × 5-row background grid of light placeholder tiles.
- * Image tiles are constrained to the LEFT two columns (1-2) and
- * the RIGHT two columns (6-7). The center column band (cols 3-5)
- * is reserved for headline/CTA — never overlapped by tiles.
- * No people / faces — only web design, UI, and editorial visuals.
+ * Hero — Editorial scattered mosaic matching the reference design.
+ * 9-col × 6-row background grid of soft placeholder squares.
+ * Image tiles scatter asymmetrically; rows 1-2 in cols 4-6 stay
+ * clear so the headline + CTAs are never covered. A single image
+ * tile sits below the CTAs in the center column.
  */
 
-// Image tiles — strictly side columns only (cols 1,2,6,7).
+// Reserved cells (col,row) the headline/CTA block sits over — keep empty.
+const RESERVED = new Set<string>([
+  "4,1","5,1","6,1",
+  "4,2","5,2","6,2",
+  "4,3","5,3","6,3",
+]);
+
+// Image tiles scattered across the grid (cells unique, none in RESERVED).
 const tiles: { col: number; row: number; src: string; alt: string }[] = [
-  { col: 1, row: 2, src: p1, alt: "Luxury interior design website hero" },
-  { col: 2, row: 3, src: p2, alt: "Digital agency landing page" },
-  { col: 6, row: 3, src: p3, alt: "Salon website hero layout" },
-  { col: 7, row: 2, src: p4, alt: "Fencing services landing page" },
+  { col: 2, row: 2, src: p1, alt: "Luxury interior design website" },
+  { col: 8, row: 2, src: p2, alt: "Digital agency landing page" },
+  { col: 3, row: 4, src: p3, alt: "Salon website hero layout" },
+  { col: 7, row: 4, src: p4, alt: "Fencing services landing page" },
+  { col: 5, row: 5, src: p1, alt: "Luxury interior detail" },
 ];
+const TILE_KEYS = new Set(tiles.map((t) => `${t.col},${t.row}`));
 
 const stats = [
   { num: "300k", label: "New users" },
@@ -29,42 +37,36 @@ const stats = [
 
 const Hero = () => (
   <section id="hero" className="relative w-full bg-white rounded-[28px] overflow-hidden">
-    {/* Background placeholder grid (7 cols × 5 rows). Side columns hold image tiles, center band stays clear. */}
+    {/* Scattered placeholder mosaic (9 × 6). Sparse — only some cells render a soft tile. */}
     <div
       aria-hidden
       className="absolute inset-0 hidden md:grid gap-3 md:gap-4 p-6 md:p-10 pt-28 md:pt-32"
       style={{
-        gridTemplateColumns: "repeat(7, 1fr)",
-        gridTemplateRows: "repeat(5, minmax(80px, 1fr))",
+        gridTemplateColumns: "repeat(9, 1fr)",
+        gridTemplateRows: "repeat(6, minmax(70px, 1fr))",
       }}
     >
-      {Array.from({ length: 7 * 5 }).map((_, i) => {
-        const col = (i % 7) + 1;
-        // Hide the center band (cols 3-5) entirely so nothing sits behind text.
-        const inCenter = col >= 3 && col <= 5;
-        if (inCenter) return <div key={i} />;
+      {Array.from({ length: 9 * 6 }).map((_, i) => {
+        const col = (i % 9) + 1;
+        const row = Math.floor(i / 9) + 1;
+        const key = `${col},${row}`;
+        if (RESERVED.has(key) || TILE_KEYS.has(key)) return <div key={i} />;
+        // Sparse pattern: render a soft empty tile only on a checkerboard-ish subset.
+        const show = (col + row) % 2 === 0 || col === 1 || col === 9;
+        if (!show) return <div key={i} />;
         return (
           <div
             key={i}
-            className="rounded-2xl bg-tile/60 border border-line/60 tile-in"
-            style={{ animationDelay: `${i * 30}ms` }}
+            className="rounded-2xl bg-tile/70 border border-line/60 tile-in"
+            style={{ animationDelay: `${i * 25}ms` }}
           />
         );
       })}
-    </div>
 
-    {/* Image tiles — only in side columns 1,2,6,7 */}
-    <div
-      aria-hidden
-      className="absolute inset-0 hidden md:grid gap-3 md:gap-4 p-6 md:p-10 pt-28 md:pt-32 pointer-events-none"
-      style={{
-        gridTemplateColumns: "repeat(7, 1fr)",
-        gridTemplateRows: "repeat(5, minmax(80px, 1fr))",
-      }}
-    >
+      {/* Image tiles overlaid on the same grid */}
       {tiles.map((t, i) => (
         <div
-          key={i}
+          key={`img-${i}`}
           className="rounded-2xl overflow-hidden shadow-card-hover tile-in bg-white"
           style={{
             gridColumn: `${t.col} / span 1`,
