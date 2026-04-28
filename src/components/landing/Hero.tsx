@@ -1,8 +1,8 @@
-import p1 from "@/assets/portrait-1.jpg";
-import p2 from "@/assets/portrait-2.jpg";
-import p3 from "@/assets/portrait-3.jpg";
-import p4 from "@/assets/portrait-4.jpg";
-import p5 from "@/assets/portrait-5.jpg";
+import p1 from "@/assets/tile-website.jpg";
+import p2 from "@/assets/tile-code.jpg";
+import p3 from "@/assets/tile-wireframe.jpg";
+import p4 from "@/assets/tile-mobile.jpg";
+import p5 from "@/assets/tile-designsystem.jpg";
 
 /**
  * Hero — Editorial grid with scattered blurred portraits.
@@ -14,11 +14,11 @@ import p5 from "@/assets/portrait-5.jpg";
 
 // Portrait positions on the 6-col × 5-row grid (col, row, image, alt)
 const portraits: { col: number; row: number; src: string; alt: string }[] = [
-  { col: 2, row: 2, src: p1, alt: "Warm portrait" },
-  { col: 6, row: 2, src: p2, alt: "Blue portrait" },
-  { col: 2, row: 3, src: p3, alt: "Silhouette portrait" },
-  { col: 6, row: 3, src: p4, alt: "Teal portrait" },
-  { col: 4, row: 4, src: p5, alt: "Warm crop portrait" },
+  { col: 2, row: 2, src: p1, alt: "Modern website on laptop" },
+  { col: 6, row: 2, src: p2, alt: "Code editor with HTML and CSS" },
+  { col: 2, row: 3, src: p3, alt: "UI wireframe canvas" },
+  { col: 6, row: 3, src: p4, alt: "Mobile app interface mockup" },
+  { col: 4, row: 4, src: p5, alt: "Design system typography and color palette" },
 ];
 
 const stats = [
