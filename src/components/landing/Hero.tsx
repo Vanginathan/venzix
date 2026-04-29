@@ -30,28 +30,33 @@ const stats = [
 
 const Hero = () => (
   <section id="hero" className="relative w-full bg-white rounded-[28px] overflow-hidden">
-    {/* Background placeholder grid */}
+    {/* Background checkerboard mosaic — soft alternating tiles */}
     <div
       aria-hidden
-      className="absolute inset-0 grid gap-3 md:gap-4 p-6 md:p-10 pt-28 md:pt-32"
+      className="absolute inset-0 z-0 pointer-events-none grid"
       style={{
-        gridTemplateColumns: "repeat(7, 1fr)",
-        gridTemplateRows: "repeat(5, minmax(80px, 1fr))",
+        gridTemplateColumns: "repeat(auto-fill, 80px)",
+        gridAutoRows: "80px",
       }}
     >
-      {Array.from({ length: 7 * 5 }).map((_, i) => (
-        <div
-          key={i}
-          className="rounded-2xl bg-tile/60 border border-line/60 tile-in"
-          style={{ animationDelay: `${i * 30}ms` }}
-        />
-      ))}
+      {Array.from({ length: 240 }).map((_, i) => {
+        // Organic shade variation across a checkerboard base.
+        const palette = ["#FFFFFF", "#EFEFEF", "#F5F5F5", "#EBEBEB"];
+        const base = (i + Math.floor(i / 18)) % 2 === 0 ? 0 : 1;
+        const jitter = (i * 7) % 11 < 3 ? 2 : (i * 13) % 17 < 2 ? 3 : base;
+        return (
+          <div
+            key={i}
+            style={{ backgroundColor: palette[jitter] }}
+          />
+        );
+      })}
     </div>
 
     {/* Scattered portraits — desktop only for clarity */}
     <div
       aria-hidden
-      className="absolute inset-0 hidden md:grid gap-3 md:gap-4 p-6 md:p-10 pt-28 md:pt-32 pointer-events-none"
+      className="absolute inset-0 z-[1] hidden md:grid gap-3 md:gap-4 p-6 md:p-10 pt-28 md:pt-32 pointer-events-none"
       style={{
         gridTemplateColumns: "repeat(7, 1fr)",
         gridTemplateRows: "repeat(5, minmax(80px, 1fr))",
