@@ -1,22 +1,20 @@
 import { useMemo, useState } from "react";
-import w1 from "@/assets/work-1.jpg";
-import w2 from "@/assets/work-2.jpg";
-import w3 from "@/assets/work-3.jpg";
-import w4 from "@/assets/work-4.jpg";
-import w5 from "@/assets/work-5.jpg";
-import w6 from "@/assets/work-6.jpg";
 import wTn from "@/assets/work-tn-fencing.png";
+import wVelavan from "@/assets/work-velavan.png";
+import wVelvera from "@/assets/work-velvera.png";
+import wVela from "@/assets/work-vela.png";
+import wMakro from "@/assets/work-makro.png";
+import wAgentra from "@/assets/work-agentra.png";
 
 type Category = "All" | "E-Commerce" | "Local Business" | "Landing Pages";
 
 const projects: { img: string; title: string; tag: string; outcome: string; category: Exclude<Category, "All">; url: string }[] = [
-  { img: wTn, title: "TN Fencing Works", tag: "Local Business", outcome: "500+ landowners served", category: "Local Business", url: "https://tn-fencing-works.vercel.app/" },
-  { img: w1,  title: "Aroma Cafe",       tag: "Restaurant",     outcome: "+38% direct bookings",   category: "Local Business", url: "#" },
-  { img: w2,  title: "Madras Threads",   tag: "E-commerce",     outcome: "2× conversion rate",     category: "E-Commerce",     url: "#" },
-  { img: w3,  title: "Lotus Clinic",     tag: "Healthcare",     outcome: "Ranks #2 locally",       category: "Local Business", url: "#" },
-  { img: w4,  title: "PixelForge SaaS",  tag: "Startup",        outcome: "Shipped in 5 days",      category: "Landing Pages",  url: "#" },
-  { img: w5,  title: "Stillpoint Yoga",  tag: "Wellness",       outcome: "2× trial signups",       category: "Local Business", url: "#" },
-  { img: w6,  title: "Marina Estates",   tag: "Real Estate",    outcome: "Custom CMS launch",      category: "E-Commerce",     url: "#" },
+  { img: wTn,      title: "TN Fencing Works",         tag: "Local Business",  outcome: "500+ landowners served", category: "Local Business", url: "https://tn-fencing-works.vercel.app/" },
+  { img: wVelavan, title: "Sri Velavan Thirumana Mahal", tag: "Wedding Hall", outcome: "Bookings & gallery site", category: "Local Business", url: "https://velavan-thirumana-hall.lovable.app/" },
+  { img: wVelvera, title: "Velvéra Salon",            tag: "Beauty & Salon",  outcome: "32k+ happy customers",   category: "Local Business", url: "https://velvera.framer.website/" },
+  { img: wVela,    title: "Vela Interiors",           tag: "Luxury Interiors",outcome: "Award-winning designs",  category: "Landing Pages",  url: "https://vela.framer.website/" },
+  { img: wMakro,   title: "Makro Finance",            tag: "AI SaaS",         outcome: "AI-powered cashflow",    category: "Landing Pages",  url: "https://makro.framer.website/" },
+  { img: wAgentra, title: "Agentra",                  tag: "AI Agents",       outcome: "Autonomous workflows",   category: "Landing Pages",  url: "https://agentra-wbs.framer.website/" },
 ];
 
 const filters: Category[] = ["All", "E-Commerce", "Local Business", "Landing Pages"];
