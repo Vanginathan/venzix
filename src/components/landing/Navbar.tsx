@@ -30,7 +30,7 @@ const Navbar = () => {
     >
       <div className="container h-[68px] flex items-center justify-between">
         <a href="#hero" className="font-heading font-bold text-[18px] text-ink tracking-tight">
-          DevCraft<span className="text-mute">/studio</span>
+          Venzix
         </a>
 
         <nav className="hidden md:flex items-center gap-8 font-body">

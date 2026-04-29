@@ -5,7 +5,7 @@ const Footer = () => (
     <div className="container py-16 grid gap-10 md:grid-cols-3">
       <div>
         <div className="font-heading font-bold text-[18px] text-ink">
-          DevCraft<span className="text-mute">/studio</span>
+          Venzix
         </div>
         <p className="mt-4 font-body text-[14px] text-mute max-w-xs leading-relaxed">
           A Chennai web design studio building fast, conversion-focused websites for local businesses and growing startups.
@@ -54,7 +54,7 @@ const Footer = () => (
         </h4>
         <ul className="mt-4 space-y-2 font-body text-[14px] text-body">
           <li><a href="tel:+919876543210" className="hover:text-ink">+91 98765 43210</a></li>
-          <li><a href="mailto:hello@devcraftstudio.com" className="hover:text-ink">hello@devcraftstudio.com</a></li>
+          <li><a href="mailto:hello@venzix.com" className="hover:text-ink">hello@venzix.com</a></li>
           <li>
             <a
               href="https://www.google.com/maps?q=Anna+Salai,+Chennai"
@@ -67,7 +67,7 @@ const Footer = () => (
           </li>
           <li>
             <a
-              href="https://g.page/devcraftstudio"
+              href="https://g.page/venzix"
               target="_blank"
               rel="noreferrer"
               className="hover:text-ink"
@@ -81,7 +81,7 @@ const Footer = () => (
 
     <div className="border-t border-line">
       <div className="container py-6 flex flex-col sm:flex-row items-center justify-between gap-3 font-body text-[13px] text-mute">
-        <p>© {new Date().getFullYear()} DevCraft Studio. All rights reserved.</p>
+        <p>© {new Date().getFullYear()} Venzix. All rights reserved.</p>
         <div className="flex gap-6">
           <a href="#" className="hover:text-ink">Privacy</a>
           <a href="#" className="hover:text-ink">Terms</a>

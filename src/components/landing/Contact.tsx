@@ -24,7 +24,7 @@ const Contact = () => {
       setDone(true);
       toast.success("Request received — we’ll reply within one business day.");
     } catch {
-      setError("Something went wrong. Please try again or email hello@devcraftstudio.com.");
+      setError("Something went wrong. Please try again or email hello@venzix.com.");
     } finally {
       setSubmitting(false);
     }

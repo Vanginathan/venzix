@@ -19,7 +19,7 @@ const reviews = [
     name: "Neha Iyer",
     business: "Madras Threads",
     initials: "NI",
-    quote: "DevCraft built our store in 10 days. Conversion is 2× what we had on our old platform. Worth every rupee.",
+    quote: "Venzix built our store in 10 days. Conversion is 2× what we had on our old platform. Worth every rupee.",
     outcome: "Shipped in 10 days",
   },
 ];
