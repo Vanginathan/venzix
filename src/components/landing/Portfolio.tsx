@@ -5,10 +5,12 @@ import w3 from "@/assets/work-3.jpg";
 import w4 from "@/assets/work-4.jpg";
 import w5 from "@/assets/work-5.jpg";
 import w6 from "@/assets/work-6.jpg";
+import wTn from "@/assets/work-tn-fencing.png";
 
 type Category = "All" | "E-Commerce" | "Local Business" | "Landing Pages";
 
 const projects: { img: string; title: string; tag: string; outcome: string; category: Exclude<Category, "All"> }[] = [
+  { img: wTn, title: "TN Fencing Works", tag: "Local Business", outcome: "500+ landowners served", category: "Local Business" },
   { img: w1, title: "Aroma Cafe",      tag: "Restaurant",  outcome: "+38% direct bookings", category: "Local Business" },
   { img: w2, title: "Madras Threads",  tag: "E-commerce",  outcome: "2× conversion rate",   category: "E-Commerce" },
   { img: w3, title: "Lotus Clinic",    tag: "Healthcare",  outcome: "Ranks #2 locally",     category: "Local Business" },
