@@ -14,10 +14,10 @@ import p5 from "@/assets/portrait-5.jpg";
 
 // Portrait positions on the 6-col × 5-row grid (col, row, image, alt)
 const portraits: { col: number; row: number; src: string; alt: string }[] = [
-  { col: 2, row: 2, src: p1, alt: "Warm portrait" },
-  { col: 6, row: 2, src: p2, alt: "Blue portrait" },
-  { col: 2, row: 3, src: p3, alt: "Silhouette portrait" },
-  { col: 6, row: 3, src: p4, alt: "Teal portrait" },
+  { col: 1, row: 2, src: p1, alt: "Warm portrait" },
+  { col: 7, row: 2, src: p2, alt: "Blue portrait" },
+  { col: 1, row: 3, src: p3, alt: "Silhouette portrait" },
+  { col: 7, row: 3, src: p4, alt: "Teal portrait" },
   { col: 4, row: 4, src: p5, alt: "Warm crop portrait" },
 ];
 
