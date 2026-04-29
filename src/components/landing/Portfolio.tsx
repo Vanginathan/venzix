@@ -9,14 +9,14 @@ import wTn from "@/assets/work-tn-fencing.png";
 
 type Category = "All" | "E-Commerce" | "Local Business" | "Landing Pages";
 
-const projects: { img: string; title: string; tag: string; outcome: string; category: Exclude<Category, "All"> }[] = [
-  { img: wTn, title: "TN Fencing Works", tag: "Local Business", outcome: "500+ landowners served", category: "Local Business" },
-  { img: w1, title: "Aroma Cafe",      tag: "Restaurant",  outcome: "+38% direct bookings", category: "Local Business" },
-  { img: w2, title: "Madras Threads",  tag: "E-commerce",  outcome: "2× conversion rate",   category: "E-Commerce" },
-  { img: w3, title: "Lotus Clinic",    tag: "Healthcare",  outcome: "Ranks #2 locally",     category: "Local Business" },
-  { img: w4, title: "PixelForge SaaS", tag: "Startup",     outcome: "Shipped in 5 days",    category: "Landing Pages" },
-  { img: w5, title: "Stillpoint Yoga", tag: "Wellness",    outcome: "2× trial signups",     category: "Local Business" },
-  { img: w6, title: "Marina Estates",  tag: "Real Estate", outcome: "Custom CMS launch",    category: "E-Commerce" },
+const projects: { img: string; title: string; tag: string; outcome: string; category: Exclude<Category, "All">; url: string }[] = [
+  { img: wTn, title: "TN Fencing Works", tag: "Local Business", outcome: "500+ landowners served", category: "Local Business", url: "https://tn-fencing-works.vercel.app/" },
+  { img: w1,  title: "Aroma Cafe",       tag: "Restaurant",     outcome: "+38% direct bookings",   category: "Local Business", url: "#" },
+  { img: w2,  title: "Madras Threads",   tag: "E-commerce",     outcome: "2× conversion rate",     category: "E-Commerce",     url: "#" },
+  { img: w3,  title: "Lotus Clinic",     tag: "Healthcare",     outcome: "Ranks #2 locally",       category: "Local Business", url: "#" },
+  { img: w4,  title: "PixelForge SaaS",  tag: "Startup",        outcome: "Shipped in 5 days",      category: "Landing Pages",  url: "#" },
+  { img: w5,  title: "Stillpoint Yoga",  tag: "Wellness",       outcome: "2× trial signups",       category: "Local Business", url: "#" },
+  { img: w6,  title: "Marina Estates",   tag: "Real Estate",    outcome: "Custom CMS launch",      category: "E-Commerce",     url: "#" },
 ];
 
 const filters: Category[] = ["All", "E-Commerce", "Local Business", "Landing Pages"];
@@ -59,9 +59,13 @@ const Portfolio = () => {
 
         <div className="mt-12 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
           {visible.map((p, i) => (
-            <article
+            <a
               key={p.title}
-              className="group relative rounded-tile overflow-hidden bg-tile animate-fade-up"
+              href={p.url}
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label={`Visit ${p.title} live site`}
+              className="group relative rounded-tile overflow-hidden bg-tile animate-fade-up block focus:outline-none focus-visible:ring-2 focus-visible:ring-ink"
               style={{ animationDelay: `${(i % 3) * 80}ms` }}
             >
               <div className="aspect-[4/5] overflow-hidden">
@@ -78,12 +82,16 @@ const Portfolio = () => {
                     <h3 className="font-heading font-bold text-[16px] text-white">{p.title}</h3>
                     <p className="text-[12px] text-white/70">{p.tag}</p>
                   </div>
-                  <span className="rounded-pill bg-white text-ink px-3 py-1 text-[11px] font-body font-semibold whitespace-nowrap">
-                    {p.outcome}
+                  <span className="rounded-pill bg-white text-ink px-3 py-1 text-[11px] font-body font-semibold whitespace-nowrap inline-flex items-center gap-1">
+                    Visit site
+                    <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+                      <path d="M7 17 17 7" />
+                      <path d="M7 7h10v10" />
+                    </svg>
                   </span>
                 </div>
               </div>
-            </article>
+            </a>
           ))}
         </div>
       </div>
