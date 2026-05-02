@@ -9,8 +9,11 @@ import Pricing from "@/components/landing/Pricing";
 import FAQ from "@/components/landing/FAQ";
 import Contact from "@/components/landing/Contact";
 import Footer from "@/components/landing/Footer";
+import { useReveal } from "@/hooks/use-reveal";
 
-const Index = () => (
+const Index = () => {
+  useReveal();
+  return (
   <div className="min-h-screen bg-background">
     <a
       href="#hero"
@@ -21,17 +24,18 @@ const Index = () => (
     <Navbar />
     <main>
       <Hero />
-      <Proof />
-      <Services />
-      <Portfolio />
-      <Process />
-      <Testimonials />
-      <Pricing />
-      <FAQ />
-      <Contact />
+      <div className="reveal"><Proof /></div>
+      <div className="reveal"><Services /></div>
+      <div className="reveal"><Portfolio /></div>
+      <div className="reveal"><Process /></div>
+      <div className="reveal"><Testimonials /></div>
+      <div className="reveal"><Pricing /></div>
+      <div className="reveal"><FAQ /></div>
+      <div className="reveal"><Contact /></div>
     </main>
     <Footer />
   </div>
-);
+  );
+};
 
 export default Index;

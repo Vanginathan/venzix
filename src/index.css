@@ -124,4 +124,57 @@
     to   { opacity: 1; transform: translateY(0); }
   }
   .animate-fade-up { animation: fade-up 0.6s ease-out both; }
+
+  /* Section reveal — fade + slight rise */
+  .reveal {
+    opacity: 0;
+    transform: translateY(28px);
+    transition: opacity 0.7s cubic-bezier(0.22, 1, 0.36, 1),
+                transform 0.7s cubic-bezier(0.22, 1, 0.36, 1);
+    will-change: opacity, transform;
+  }
+  .reveal.is-visible { opacity: 1; transform: translateY(0); }
+
+  /* Soft hover lift — for cards & surfaces */
+  .hover-lift {
+    transition: transform 0.35s cubic-bezier(0.22, 1, 0.36, 1),
+                box-shadow 0.35s cubic-bezier(0.22, 1, 0.36, 1);
+    will-change: transform;
+  }
+  .hover-lift:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 14px 40px hsl(0 0% 0% / 0.10);
+  }
+
+  /* Subtle 3D tilt on hover (CSS-only) */
+  .tilt-card {
+    transform-style: preserve-3d;
+    transition: transform 0.4s cubic-bezier(0.22, 1, 0.36, 1),
+                box-shadow 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+    will-change: transform;
+  }
+  .tilt-card:hover {
+    transform: perspective(900px) rotate3d(1, -1, 0, 3deg) translateY(-4px);
+    box-shadow: 0 18px 50px hsl(0 0% 0% / 0.12);
+  }
+
+  /* Responsive press feel for buttons & links */
+  .press {
+    transition: transform 0.18s ease-out, box-shadow 0.18s ease-out, background-color 0.2s ease-out, color 0.2s ease-out;
+  }
+  .press:hover { transform: translateY(-1px); }
+  .press:active {
+    transform: scale(0.96);
+    box-shadow: 0 1px 4px hsl(0 0% 0% / 0.08) !important;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .reveal, .hover-lift, .tilt-card, .press,
+    .animate-fade-up, .tile-in, .animate-up {
+      transition: none !important;
+      animation: none !important;
+      transform: none !important;
+      opacity: 1 !important;
+    }
+  }
 }
