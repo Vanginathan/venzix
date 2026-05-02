@@ -1,31 +1,13 @@
-import p1 from "@/assets/portrait-1.jpg";
-import p2 from "@/assets/portrait-2.jpg";
-import p3 from "@/assets/portrait-3.jpg";
-import p4 from "@/assets/portrait-4.jpg";
-import p5 from "@/assets/portrait-5.jpg";
-
 /**
- * Hero — Editorial grid with scattered blurred portraits.
- * Background: subtle 6×5 grid of square placeholder tiles.
- * Overlay: 5 portraits at fixed grid cells (slightly larger than a cell, rounded).
- * Foreground: centered headline, badge, CTAs.
- * Below: stats row.
+ * Hero — Editorial centered headline on a soft mosaic background.
+ * Foreground: headline, badge, CTAs. Below: stats row.
  */
 
-// Portrait positions on the 6-col × 5-row grid (col, row, image, alt)
-const portraits: { col: number; row: number; src: string; alt: string }[] = [
-  { col: 1, row: 2, src: p1, alt: "Warm portrait" },
-  { col: 7, row: 2, src: p2, alt: "Blue portrait" },
-  { col: 1, row: 3, src: p3, alt: "Silhouette portrait" },
-  { col: 7, row: 3, src: p4, alt: "Teal portrait" },
-  { col: 4, row: 4, src: p5, alt: "Warm crop portrait" },
-];
-
 const stats = [
-  { num: "300k", label: "New users" },
-  { num: "76M", label: "Assets Secured" },
-  { num: "10+", label: "Years of experience" },
-  { num: "98%", label: "Customer satisfaction" },
+  { num: "60+", label: "Websites delivered" },
+  { num: "3–7d", label: "Average launch time" },
+  { num: "5+", label: "Years building for SMBs" },
+  { num: "98%", label: "Client satisfaction" },
 ];
 
 const Hero = () => (
@@ -53,30 +35,6 @@ const Hero = () => (
       })}
     </div>
 
-    {/* Scattered portraits — desktop only for clarity */}
-    <div
-      aria-hidden
-      className="absolute inset-0 z-[1] hidden md:grid gap-3 md:gap-4 p-6 md:p-10 pt-28 md:pt-32 pointer-events-none"
-      style={{
-        gridTemplateColumns: "repeat(7, 1fr)",
-        gridTemplateRows: "repeat(5, minmax(80px, 1fr))",
-      }}
-    >
-      {portraits.map((p, i) => (
-        <div
-          key={i}
-          className="rounded-2xl overflow-hidden shadow-card-hover tile-in"
-          style={{
-            gridColumn: `${p.col} / span 1`,
-            gridRow: `${p.row} / span 1`,
-            animationDelay: `${300 + i * 120}ms`,
-          }}
-        >
-          <img src={p.src} alt={p.alt} className="h-full w-full object-cover" />
-        </div>
-      ))}
-    </div>
-
     {/* Soft white scrim for legibility */}
     <div
       aria-hidden
@@ -92,11 +50,11 @@ const Hero = () => (
         </span>
 
         <h1 className="font-heading font-bold mt-4 text-4xl md:text-6xl lg:text-7xl leading-[1.05] tracking-tight text-ink">
-          We Design simple and<br />high converting websites
+          Web development that<br />grows your business
         </h1>
 
         <p className="mt-5 text-sm md:text-base text-mute font-body max-w-xl mx-auto">
-          we turn your ideas into high-impact digital experiences.
+          Custom websites and web apps — designed, developed and launched in days, not months.
         </p>
 
         <div className="mt-7 flex flex-col sm:flex-row gap-3 justify-center">

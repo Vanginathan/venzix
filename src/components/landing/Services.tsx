@@ -1,25 +1,25 @@
-import { Monitor, Search, Rocket, Zap, ArrowUpRight } from "lucide-react";
+import { Monitor, Code2, ShoppingBag, Zap, ArrowUpRight } from "lucide-react";
 
 const services = [
   {
     icon: Monitor,
-    title: "Website Design & Development",
-    desc: "Custom-built sites that look great, load fast, and convert visitors into clients.",
+    title: "Custom Website Development",
+    desc: "Hand-coded, responsive websites built with React and modern stacks — fast, secure, and easy to maintain.",
   },
   {
-    icon: Search,
-    title: "Google Business Optimisation",
-    desc: "Show up in local search and Maps with a fully optimised Business Profile.",
+    icon: ShoppingBag,
+    title: "E-commerce & Web Apps",
+    desc: "Online stores, booking systems, dashboards and custom web apps with payments and admin built in.",
   },
   {
-    icon: Rocket,
+    icon: Code2,
     title: "Landing Page Builds",
-    desc: "High-converting single pages for product launches, ads, and lead gen.",
+    desc: "High-converting single pages for product launches, ad campaigns, and lead generation.",
   },
   {
     icon: Zap,
-    title: "SEO & Speed Optimisation",
-    desc: "Technical SEO, Core Web Vitals fixes, and content tuning for organic growth.",
+    title: "SEO & Performance",
+    desc: "Technical SEO, Core Web Vitals fixes, and performance tuning so your site ranks and loads instantly.",
   },
 ];
 
@@ -29,7 +29,7 @@ const Services = () => (
       <div className="max-w-2xl">
         <p className="font-body text-[13px] uppercase tracking-[0.18em] text-mute">Services</p>
         <h2 className="mt-3 font-heading font-bold text-3xl md:text-[42px] text-ink leading-tight">
-          Everything your business needs to win online.
+          Web development services, end to end.
         </h2>
       </div>
 
