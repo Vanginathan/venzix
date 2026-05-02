@@ -4,28 +4,72 @@ import { cn } from "@/lib/utils";
 const plans = [
   {
     name: "Starter",
-    price: "₹24,999",
-    sub: "starting from",
-    desc: "A clean 3-page site for small businesses ready to go online.",
-    features: ["3-page custom design", "Mobile-first responsive", "Contact form + WhatsApp", "On-page SEO basics", "Delivered in 5 days"],
+    price: "₹12,000",
+    sub: "one-time",
+    desc: "Local shops, individuals, freelancers",
+    features: [
+      "Up to 5 pages (Home, About, Services, Contact)",
+      "Mobile responsive design",
+      "Google Business Profile setup",
+      "Contact form + WhatsApp button",
+      "Basic on-page SEO",
+      "Vercel deployment + GitHub setup",
+      "1 month free support",
+    ],
+    delivery: "Delivery: 4–6 days",
     cta: "Choose Starter",
     featured: false,
   },
   {
     name: "Growth",
-    price: "₹59,999",
-    sub: "starting from",
-    desc: "A 7-page conversion-focused site, with the works.",
-    features: ["Up to 7 custom pages", "Blog / CMS setup", "Google Analytics + Search Console", "Lead capture + automations", "30 days post-launch support"],
+    price: "₹28,000",
+    sub: "one-time",
+    desc: "Restaurants, clinics, service businesses",
+    features: [
+      "Up to 12 pages + Blog / News section",
+      "Everything in Starter",
+      "Dynamic CMS (editable content)",
+      "Local SEO setup (keywords + metadata)",
+      "Google Maps + Reviews integration",
+      "Google Analytics + Search Console",
+      "Performance & speed optimization",
+      "3 months free support",
+    ],
+    delivery: "Delivery: 7–12 days",
     cta: "Choose Growth",
     featured: true,
   },
   {
+    name: "Pro",
+    price: "₹50,000",
+    sub: "one-time",
+    desc: "Established businesses, startups",
+    features: [
+      "E-commerce store (unlimited products)",
+      "Everything in Growth",
+      "Payment gateway (Razorpay/UPI)",
+      "Admin dashboard for orders",
+      "Advanced local SEO + sitemap",
+      "Booking system or custom feature",
+      "6 months free support + maintenance",
+    ],
+    delivery: "Delivery: 14–20 days",
+    cta: "Choose Pro",
+    featured: false,
+  },
+  {
     name: "Custom",
-    price: "Let’s talk",
-    sub: "scoped to project",
-    desc: "E-commerce, integrations, multi-language, or web apps.",
-    features: ["Custom scope & timeline", "E-commerce / multi-language", "Third-party integrations", "Dedicated PM", "Ongoing maintenance plans"],
+    price: "₹80,000+",
+    sub: "quoted",
+    desc: "Complex projects, special requirements",
+    features: [
+      "Multi-language or multi-location sites",
+      "Advanced automation & integrations",
+      "Custom web app features",
+      "Priority support & dedicated calls",
+      "SLA-backed delivery timeline",
+    ],
+    delivery: "Timeline: Discussed on call",
     cta: "Book a Discovery Call",
     featured: false,
   },
@@ -41,7 +85,7 @@ const Pricing = () => (
         </h2>
       </div>
 
-      <div className="mt-12 grid gap-5 lg:grid-cols-3">
+      <div className="mt-12 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
         {plans.map((p) => (
           <article
             key={p.name}
@@ -56,11 +100,11 @@ const Pricing = () => (
               </span>
             )}
             <h3 className="font-heading font-bold text-lg text-ink">{p.name}</h3>
+            <p className="mt-2 font-body text-[14px] text-mute">{p.desc}</p>
             <div className="mt-4">
               <div className="font-heading font-bold text-[44px] leading-none text-ink">{p.price}</div>
               <div className="mt-1 text-[13px] text-mute font-body">{p.sub}</div>
             </div>
-            <p className="mt-4 font-body text-[14px] text-mute">{p.desc}</p>
 
             <ul className="mt-6 space-y-3 flex-1">
               {p.features.map((f) => (
@@ -70,6 +114,10 @@ const Pricing = () => (
                 </li>
               ))}
             </ul>
+
+            <span className="mt-6 inline-flex self-start rounded-pill bg-surface text-body px-3 py-1 font-body text-[12px]">
+              {p.delivery}
+            </span>
 
             <a
               href="#contact"

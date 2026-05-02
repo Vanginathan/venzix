@@ -1,8 +1,8 @@
 const steps = [
-  { n: "01", title: "Discovery Call", desc: "A 30-minute call to understand your business, goals, and audience. We leave with a clear scope and timeline." },
-  { n: "02", title: "Design & Prototype", desc: "We design every page in Figma and walk you through a clickable prototype before a single line of code is written." },
-  { n: "03", title: "Build & Test", desc: "We build the site, optimise for speed, and test on real devices. You see weekly previews and approve every step." },
-  { n: "04", title: "Launch & Optimise", desc: "We deploy, hand over a CMS training video, and stay with you for 30 days of free post-launch support." },
+  { n: "01", title: "Discovery Call", desc: "A 30-minute call to understand your business, goals, and audience. We leave with a clear scope and fixed quote." },
+  { n: "02", title: "Design & Prototype", desc: "We design every page in Figma and share a clickable prototype before any code is written." },
+  { n: "03", title: "Develop & Test", desc: "We build with React, optimise for speed, and test on real devices. You see weekly previews and approve each step." },
+  { n: "04", title: "Launch & Support", desc: "We deploy to Vercel, hand over a CMS walkthrough, and stay with you with free post-launch support." },
 ];
 
 /**

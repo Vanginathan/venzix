@@ -66,10 +66,10 @@ const Contact = () => {
 
               <div className="grid sm:grid-cols-2 gap-4">
                 <Select id="projectType" label="Project type *" name="projectType" required options={[
-                  "New Website", "Redesign", "Landing Page", "Google Business Setup", "Not sure",
+                  "New Website", "Website Redesign", "Landing Page", "E-commerce Store", "Web App", "Not sure",
                 ]} />
                 <Select id="budget" label="Budget range" name="budget" options={[
-                  "Under ₹25,000", "₹25,000 – ₹60,000", "₹60,000 – ₹1.5L", "₹1.5L+",
+                  "Under ₹15,000", "₹15,000 – ₹30,000", "₹30,000 – ₹60,000", "₹60,000 – ₹1L", "₹1L+",
                 ]} />
               </div>
 
