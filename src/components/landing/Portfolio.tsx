@@ -43,7 +43,7 @@ const Portfolio = () => {
                 key={f}
                 onClick={() => setActive(f)}
                 className={
-                  "rounded-pill px-4 h-9 text-[13px] font-body font-medium border transition-base " +
+                  "rounded-pill px-4 h-9 text-[13px] font-body font-medium border press " +
                   (active === f
                     ? "bg-ink text-white border-ink"
                     : "bg-white text-body border-line hover:border-ink hover:text-ink")

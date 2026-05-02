@@ -47,7 +47,7 @@ const Navbar = () => {
 
         <a
           href="#contact"
-          className="hidden md:inline-flex items-center justify-center rounded-pill bg-ink text-white px-5 h-10 font-heading font-semibold text-[13px] transition-base hover:bg-primary-hover"
+          className="hidden md:inline-flex items-center justify-center rounded-pill bg-ink text-white px-5 h-10 font-heading font-semibold text-[13px] press hover:bg-primary-hover"
         >
           Book a Call
         </a>

@@ -37,7 +37,7 @@ const Services = () => (
         {services.map(({ icon: Icon, title, desc }) => (
           <article
             key={title}
-            className="group bg-white border border-line rounded-lg p-8 transition-base hover:-translate-y-1 hover:shadow-card-hover"
+            className="group bg-white border border-line rounded-lg p-8 tilt-card hover:border-ink/20"
           >
             <div className="flex items-start justify-between">
               <div className="h-10 w-10 rounded-md border border-line flex items-center justify-center text-ink">
