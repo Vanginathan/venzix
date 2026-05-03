@@ -9,6 +9,7 @@ import Pricing from "@/components/landing/Pricing";
 import FAQ from "@/components/landing/FAQ";
 import Contact from "@/components/landing/Contact";
 import Footer from "@/components/landing/Footer";
+import WhatsAppButton from "@/components/WhatsAppButton";
 import { useReveal } from "@/hooks/use-reveal";
 
 const Index = () => {
@@ -34,6 +35,7 @@ const Index = () => {
       <div className="reveal"><Contact /></div>
     </main>
     <Footer />
+    <WhatsAppButton />
   </div>
   );
 };

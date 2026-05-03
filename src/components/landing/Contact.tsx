@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { CheckCircle2 } from "lucide-react";
 import { toast } from "sonner";
+import { supabase } from "@/integrations/supabase/client";
 
 /**
  * Lead capture — dark section with white form card.
@@ -18,12 +19,23 @@ const Contact = () => {
     if (fd.get("_honey")) return; // silent honeypot
     setSubmitting(true);
     try {
-      // Replace endpoint at deploy time
-      // await fetch("https://formspree.io/f/REPLACE_WITH_YOUR_ID", { ... });
-      await new Promise((r) => setTimeout(r, 800));
+      const payload = {
+        name: String(fd.get("name") ?? "").trim(),
+        phone: String(fd.get("phone") ?? "").trim(),
+        email: String(fd.get("email") ?? "").trim(),
+        website: (String(fd.get("website") ?? "").trim() || null) as string | null,
+        project_type: String(fd.get("projectType") ?? "").trim(),
+        budget: (String(fd.get("budget") ?? "").trim() || null) as string | null,
+        message: (String(fd.get("message") ?? "").trim() || null) as string | null,
+      };
+      const { error: insertError } = await supabase
+        .from("contact_submissions")
+        .insert(payload);
+      if (insertError) throw insertError;
       setDone(true);
       toast.success("Request received — we’ll reply within one business day.");
-    } catch {
+    } catch (err) {
+      console.error("Contact form submit failed", err);
       setError("Something went wrong. Please try again or email hello@venzix.com.");
     } finally {
       setSubmitting(false);
