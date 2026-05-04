@@ -1,3 +1,4 @@
+// src/components/landing/Portfolio.tsx
 import { useMemo, useState } from "react";
 import wTn from "@/assets/work-tn-fencing.png";
 import wVelavan from "@/assets/work-velavan.png";

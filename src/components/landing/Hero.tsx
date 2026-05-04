@@ -1,3 +1,4 @@
+// src/components/landing/Hero.tsx
 /**
  * Hero — Editorial centered headline on a soft mosaic background.
  * Foreground: headline, badge, CTAs. Below: stats row.

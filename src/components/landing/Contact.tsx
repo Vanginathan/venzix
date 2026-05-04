@@ -1,3 +1,4 @@
+// src/components/landing/Contact.tsx
 import { useState } from "react";
 import { CheckCircle2 } from "lucide-react";
 import { toast } from "sonner";

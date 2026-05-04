@@ -1,3 +1,4 @@
+// src/components/landing/Testimonials.tsx
 import { Star } from "lucide-react";
 
 const reviews = [

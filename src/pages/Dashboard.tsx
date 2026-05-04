@@ -1,3 +1,4 @@
+// src/pages/Dashboard.tsx
 import { useEffect, useMemo, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { LogOut, Search, MessageCircle } from "lucide-react";

@@ -1,3 +1,4 @@
+// src/components/landing/Process.tsx
 const steps = [
   { n: "01", title: "Discovery Call", desc: "A 30-minute call to understand your business, goals, and audience. We leave with a clear scope and fixed quote." },
   { n: "02", title: "Design & Prototype", desc: "We design every page in Figma and share a clickable prototype before any code is written." },

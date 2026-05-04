@@ -1,3 +1,4 @@
+// src/components/WhatsAppButton.tsx
 import { MessageCircle } from "lucide-react";
 
 const PHONE = "917708201511"; // India country code + number

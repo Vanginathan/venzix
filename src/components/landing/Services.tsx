@@ -1,3 +1,4 @@
+// src/components/landing/Services.tsx
 import { Monitor, Code2, ShoppingBag, Zap, ArrowUpRight } from "lucide-react";
 
 const services = [

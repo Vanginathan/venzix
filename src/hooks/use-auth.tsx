@@ -1,3 +1,4 @@
+// src/hooks/use-auth.tsx
 import { createContext, useContext, useEffect, useState, ReactNode } from "react";
 import type { Session, User } from "@supabase/supabase-js";
 import { supabase } from "@/integrations/supabase/client";
