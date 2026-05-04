@@ -1,3 +1,4 @@
+// src/components/landing/Footer.tsx
 import { Linkedin, Instagram, Dribbble } from "lucide-react";
 
 const Footer = () => (

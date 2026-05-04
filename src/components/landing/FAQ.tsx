@@ -1,3 +1,4 @@
+// src/components/landing/FAQ.tsx
 import { useState } from "react";
 import { Plus } from "lucide-react";
 import { cn } from "@/lib/utils";

@@ -1,3 +1,4 @@
+// src/components/landing/Proof.tsx
 const logos = [
   "AROMA CAFE",
   "MADRAS THREADS",

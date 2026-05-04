@@ -1,3 +1,4 @@
+// src/hooks/use-reveal.ts
 import { useEffect } from "react";
 
 /**

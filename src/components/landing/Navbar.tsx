@@ -1,3 +1,4 @@
+// src/components/landing/Navbar.tsx
 import { useEffect, useState } from "react";
 import { Menu, X } from "lucide-react";
 import { cn } from "@/lib/utils";

@@ -1,3 +1,4 @@
+// src/pages/Index.tsx
 import Navbar from "@/components/landing/Navbar";
 import Hero from "@/components/landing/Hero";
 import Proof from "@/components/landing/Proof";
