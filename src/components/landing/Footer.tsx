@@ -9,7 +9,7 @@ const Footer = () => (
           Venzix
         </div>
         <p className="mt-4 font-body text-[14px] text-mute max-w-xs leading-relaxed">
-          A Chennai web design studio building fast, conversion-focused websites for local businesses and growing startups.
+          A Chinna Salem web design and development studio building fast, conversion-focused websites for local businesses and growing startups.
         </p>
         <div className="mt-6 flex gap-2">
           {[
@@ -54,8 +54,8 @@ const Footer = () => (
           Get in touch
         </h4>
         <ul className="mt-4 space-y-2 font-body text-[14px] text-body">
-          <li><a href="tel:+919876543210" className="hover:text-ink">+91 98765 43210</a></li>
-          <li><a href="mailto:hello@venzix.com" className="hover:text-ink">hello@venzix.com</a></li>
+          <li><a href="tel:+919876543210" className="hover:text-ink">+91 7708201511</a></li>
+          <li><a href="mailto:hello@venzix.com" className="hover:text-ink">infovenzix@gmail.com</a></li>
           <li>
             <a
               href="https://www.google.com/maps?q=Anna+Salai,+Chennai"
@@ -63,7 +63,7 @@ const Footer = () => (
               rel="noreferrer"
               className="hover:text-ink"
             >
-              Anna Salai, Chennai 600002
+              Chinnasalem, Tamil Nadu 606201
             </a>
           </li>
           <li>

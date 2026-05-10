@@ -3,16 +3,25 @@ import { useEffect } from "react";
 
 /**
  * Observes elements with the `.reveal` class and adds `.is-visible`
- * when they enter the viewport. Runs once globally on mount.
+ * when they enter the viewport.
+ * - Respects prefers-reduced-motion (shows all instantly)
+ * - Applies data-stagger="N" → N*80ms cascade delay
+ * - Re-scans at 100ms, 400ms, 1000ms to catch late-rendered elements
  */
 export function useReveal() {
   useEffect(() => {
     if (typeof window === "undefined") return;
+
     const prefersReduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
-    const els = Array.from(document.querySelectorAll<HTMLElement>(".reveal"));
+    const show = (el: HTMLElement) => {
+      const stagger = Number(el.dataset.stagger ?? 0);
+      if (stagger) el.style.transitionDelay = `${stagger * 80}ms`;
+      el.classList.add("is-visible");
+    };
+
     if (prefersReduced) {
-      els.forEach((el) => el.classList.add("is-visible"));
+      document.querySelectorAll<HTMLElement>(".reveal").forEach(show);
       return;
     }
 
@@ -20,23 +29,30 @@ export function useReveal() {
       (entries) => {
         entries.forEach((entry) => {
           if (entry.isIntersecting) {
-            entry.target.classList.add("is-visible");
+            show(entry.target as HTMLElement);
             io.unobserve(entry.target);
           }
         });
       },
-      { threshold: 0.12, rootMargin: "0px 0px -40px 0px" }
+      { threshold: 0.08, rootMargin: "0px 0px -20px 0px" }
     );
 
-    els.forEach((el) => io.observe(el));
+    const scan = () => {
+      document.querySelectorAll<HTMLElement>(".reveal:not(.is-visible)").forEach((el) => {
+        io.observe(el);
+      });
+    };
 
-    // Re-scan shortly after mount in case content renders late.
-    const t = window.setTimeout(() => {
-      document.querySelectorAll<HTMLElement>(".reveal:not(.is-visible)").forEach((el) => io.observe(el));
-    }, 250);
+    // Scan immediately and at intervals to catch all dynamically rendered elements
+    scan();
+    const t1 = window.setTimeout(scan, 100);
+    const t2 = window.setTimeout(scan, 400);
+    const t3 = window.setTimeout(scan, 1000);
 
     return () => {
-      window.clearTimeout(t);
+      window.clearTimeout(t1);
+      window.clearTimeout(t2);
+      window.clearTimeout(t3);
       io.disconnect();
     };
   }, []);

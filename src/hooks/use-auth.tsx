@@ -32,16 +32,16 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
       setIsAdmin(!!data);
     };
 
-    const { data: sub } = supabase.auth.onAuthStateChange((_e, s) => {
-      setSession(s);
-      setUser(s?.user ?? null);
-      setTimeout(() => checkRole(s?.user?.id), 0);
-    });
-
-    supabase.auth.getSession().then(({ data: { session: s } }) => {
+     supabase.auth.getSession().then(({ data: { session: s } }) => {
       setSession(s);
       setUser(s?.user ?? null);
       checkRole(s?.user?.id).finally(() => setLoading(false));
+    });
+
+    const { data: sub } = supabase.auth.onAuthStateChange((_e, s) => {
+      setSession(s);
+      setUser(s?.user ?? null);
+      checkRole(s?.user?.id);
     });
 
     return () => sub.subscription.unsubscribe();
