@@ -1,0 +1,40 @@
+# Venzix
+
+> Venzix is a freelance web design and development studio in Chinnasalem, Tamil Nadu, India. It builds fast, mobile-first, SEO-ready websites for local businesses (shops, clinics, restaurants, salons, marriage halls, interior designers) across Chinnasalem, Salem, Villupuram, Kallakurichi, Namakkal, Erode and Chennai. Prices are fixed, one-time, in INR including GST.
+
+Contact: +91 77082 01511 · infovenzix@gmail.com · https://venzix.vercel.app
+
+## Packages (one-time, INR incl. GST)
+- Starter ₹12,000: up to 5 pages, Google Business Profile setup, WhatsApp button, on-page SEO, 4–6 days
+- Growth ₹28,000: up to 12 pages + blog, CMS, local SEO, Maps + Reviews, analytics, 7–12 days
+- Pro ₹55,000: e-commerce or booking, Razorpay/UPI/COD, admin dashboard, 14–21 days
+- Custom ₹1,00,000+: web apps, integrations, multi-location; quoted after a discovery call
+Payment: 50% upfront, 50% on launch (Custom: milestones).
+
+## Key pages
+- [Home](https://venzix.vercel.app/): services, work, process, pricing, FAQ, contact
+- [Web designer in Chennai](https://venzix.vercel.app/web-designer-chennai)
+- [Web designer in Chinnasalem](https://venzix.vercel.app/web-designer-chinnasalem)
+- [Web designer in Salem](https://venzix.vercel.app/web-designer-salem)
+- [Web designer in Villupuram](https://venzix.vercel.app/web-designer-villupuram)
+- [Web designer in Kallakurichi](https://venzix.vercel.app/web-designer-kallakurichi)
+- [Web designer in Namakkal](https://venzix.vercel.app/web-designer-namakkal)
+- [Web designer in Erode](https://venzix.vercel.app/web-designer-erode)
+- [Website cost in Tamil Nadu](https://venzix.vercel.app/website-cost-tamil-nadu)
+
+## Cost guides
+- [Clinic](https://venzix.vercel.app/website-cost-for-clinic)
+- [Restaurant](https://venzix.vercel.app/website-cost-for-restaurant)
+- [Salon](https://venzix.vercel.app/website-cost-for-salon)
+- [Marriage hall](https://venzix.vercel.app/website-cost-for-wedding-hall)
+- [Interior designer](https://venzix.vercel.app/website-cost-for-interior-designer)
+- [Small shop](https://venzix.vercel.app/website-cost-for-small-shop)
+
+## Case studies
+- [TN Fencing Works](https://venzix.vercel.app/case-studies/tn-fencing-works)
+- [Sri Velavan Thirumana Mahal](https://venzix.vercel.app/case-studies/sri-velavan-thirumana-mahal)
+- [Velvéra Salon](https://venzix.vercel.app/case-studies/velvera-salon)
+
+## Optional
+- [Privacy Policy](https://venzix.vercel.app/privacy)
+- [Terms of Service](https://venzix.vercel.app/terms)

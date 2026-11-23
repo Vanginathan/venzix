@@ -1,13 +1,13 @@
 import { useEffect, useState } from "react";
+import { SITE } from "@/config/site";
 
 const stats = [
-  { num: "60+", label: "Websites delivered" },
-  { num: "3–7d", label: "Average launch time" },
-  { num: "5+", label: "Years building for SMBs" },
-  { num: "98%", label: "Client satisfaction" },
+  { num: "6", label: "Live projects in our portfolio" },
+  { num: "3–7 days", label: "Typical launch time" }, // owner to confirm
+  { num: "₹12,000", label: "Starting price" },
 ];
 
-const PHONE = "917708201511";
+const PHONE = SITE.phoneIntl;
 const WA_MSG = encodeURIComponent(
   "Hi, I'd like to get a free quote for my website."
 );
@@ -16,9 +16,7 @@ const Hero = () => {
   const [flash, setFlash] = useState(false);
   const [progress, setProgress] = useState(0);
 
-  const month = new Date().toLocaleString("en-IN", {
-    month: "long",
-  });
+  
 
   useEffect(() => {
     const t1 = setTimeout(() => setFlash(true), 800);
@@ -111,12 +109,12 @@ const Hero = () => {
                   flash ? "text-amber-700" : "text-amber-600",
                 ].join(" ")}
               >
-                Only <strong>4 slots left</strong> for {month} —{" "}
+                Free quote for your project —{" "}
                 <a
                   href="#contact"
                   className="underline underline-offset-2 hover:text-amber-800"
                 >
-                  secure yours now
+                  get started
                 </a>
               </span>
             </div>

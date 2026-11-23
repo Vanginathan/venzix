@@ -11,8 +11,8 @@ import { CheckCircle2, Lock, Loader2 } from "lucide-react";
 import { toast } from "sonner";
 import { z } from "zod";
 import { supabase } from "@/integrations/supabase/client";
+import { SITE } from "@/config/site";
 
-const MONTH = new Date().toLocaleString("en-IN", { month: "long" });
 
 const contactSchema = z.object({
   name:        z.string().min(2, "Name must be at least 2 characters").max(100),
@@ -83,7 +83,7 @@ const Contact = () => {
         toast.error(
           insertError.code === "23505"
             ? "We already have your details — we'll be in touch soon!"
-            : `Submission failed: ${insertError.message}. Please email hello@venzix.com.`
+            : `Submission failed: ${insertError.message}. Please email ${SITE.email}.`
         );
         return;
       }
@@ -92,7 +92,7 @@ const Contact = () => {
       toast.success("Request received — we'll reply within one business day.");
     } catch (err) {
       console.error("Contact form unexpected error:", err);
-      toast.error("Something went wrong. Please email hello@venzix.com.");
+      toast.error("Something went wrong. Please email ${SITE.email}.");
     } finally {
       setSubmitting(false);
     }
@@ -116,17 +116,7 @@ const Contact = () => {
           plan, timeline, and fixed quote.
         </p>
 
-        {/* Scarcity */}
-        <div className="mt-6 inline-flex items-center gap-2 rounded-pill border border-white/20 bg-white/10 px-5 py-2.5">
-          <span className="relative flex h-2 w-2">
-            <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-amber-400 opacity-75" />
-            <span className="relative inline-flex rounded-full h-2 w-2 bg-amber-400" />
-          </span>
-          <span className="font-body text-[13px] text-white/80">
-            Only <strong className="text-white">4 spots</strong> left for {MONTH}
-            {" "}— spots filling fast
-          </span>
-        </div>
+        
 
         <div className="mt-10 bg-white text-ink rounded-lg p-6 md:p-10 text-left max-w-2xl mx-auto shadow-xl-custom">
           {done ? (

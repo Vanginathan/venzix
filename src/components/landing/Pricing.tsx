@@ -3,10 +3,9 @@
 import React from "react";
 import { Check, Clock, Phone, Zap, Shield, Star } from "lucide-react";
 import { cn } from "@/lib/utils";
+import { waLink } from "@/config/site";
 
-const MONTH = new Date().toLocaleString("en-IN", {
-  month: "long",
-});
+
 
 type Feature = {
   text: string;
@@ -33,10 +32,7 @@ type Plan = {
   icon: React.ReactNode;
 };
 
-const PHONE = "917708201511";
-
-const WA = (msg: string) =>
-  `https://wa.me/${PHONE}?text=${encodeURIComponent(msg)}`;
+const WA = waLink;
 
 const plans: Plan[] = [
   {
@@ -225,16 +221,7 @@ const Pricing = () => {
 
         {/* Trust / scarcity */}
         <div className="reveal mt-6 flex flex-wrap items-center gap-3">
-          <div className="inline-flex items-center gap-2 rounded-pill border border-amber-200 bg-amber-50 px-4 py-2">
-            <span className="relative flex h-2 w-2">
-              <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-amber-400 opacity-75" />
-              <span className="relative inline-flex h-2 w-2 rounded-full bg-amber-500" />
-            </span>
-
-            <span className="font-body text-[13px] font-medium text-amber-800">
-              Only 4 slots left for {MONTH}
-            </span>
-          </div>
+          
 
           <div className="inline-flex items-center gap-2 rounded-pill border border-line bg-white px-4 py-2">
             <Check className="h-3.5 w-3.5 text-ink" strokeWidth={2.5} />

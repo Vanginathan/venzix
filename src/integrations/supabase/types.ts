@@ -35,6 +35,7 @@ export type Database = {
           notes?: string | null;
           updated_at?: string;
         };
+        Relationships: [];
       };
       user_roles: {
         Row: {
@@ -52,6 +53,7 @@ export type Database = {
         Update: {
           role?: "admin" | "user";
         };
+        Relationships: [];
       };
     };
     Views: Record<string, never>;
@@ -62,5 +64,6 @@ export type Database = {
       };
     };
     Enums: Record<string, never>;
+    CompositeTypes: Record<string, never>;
   };
 };

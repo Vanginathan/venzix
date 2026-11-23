@@ -5,40 +5,7 @@ import { useEffect, useState } from "react";
 import { Plus } from "lucide-react";
 import { cn } from "@/lib/utils";
 
-const faqs = [
-  {
-    q: "How long does a website take to build?",
-    a: "Most Starter sites go live in 3–5 working days. Growth plans take 7–12 days. We commit to a hard launch date on your discovery call — no vague timelines.",
-  },
-  {
-    q: "What is included in every project?",
-    a: "Every site includes custom design, mobile-first development, on-page SEO basics (meta titles, descriptions, structured data), SSL setup, Vercel hosting, and a CMS so you or your team can edit content without needing a developer.",
-  },
-  {
-    q: "Do you handle SEO?",
-    a: "Yes — every site ships with on-page SEO, schema markup, and Google Search Console submission. We also offer standalone technical SEO audits and monthly content packages for businesses that want to rank competitively.",
-  },
-  {
-    q: "Can you manage my Google Business Profile?",
-    a: "Absolutely. We optimise your listing, sync services and business hours, upload professional photos, respond to reviews, and add a direct booking link so new customers can contact you straight from Google Maps.",
-  },
-  {
-    q: "How do I get started?",
-    a: "Book a free 30-minute discovery call. We'll discuss your goals, review your current site (if any), and send a fixed quote within 24 hours. No commitment needed to get the quote.",
-  },
-  {
-    q: "Do you only work with businesses in Chennai?",
-    a: "Our expertise is built around Chennai and Tamil Nadu businesses, but we work with clients across India. We've launched sites for businesses in Bangalore, Coimbatore, and Mumbai too.",
-  },
-  {
-    q: "What technology stack do you use?",
-    a: "We choose the stack to fit the project — typically React + Next.js for fast, SEO-friendly sites, or a headless CMS (Sanity/Contentful) for content-heavy businesses. Everything is fast, secure, and handover-ready.",
-  },
-  {
-    q: "Do you offer payment in instalments?",
-    a: "Yes. We typically work on a 50% upfront and 50% on-launch basis. For larger projects (₹50k+), we can split into three milestones. We accept UPI, bank transfer, and Razorpay.",
-  },
-];
+import { homeFaqs as faqs } from "@/faqData";
 
 const FAQ = () => {
   const [open, setOpen] = useState<number | null>(0);

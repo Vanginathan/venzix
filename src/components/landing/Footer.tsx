@@ -1,5 +1,6 @@
 // src/components/landing/Footer.tsx
 import { Linkedin, Instagram, Dribbble } from "lucide-react";
+import { SITE } from "@/config/site";
 
 const Footer = () => (
   <footer id="footer" className="bg-white border-t border-line">
@@ -54,11 +55,11 @@ const Footer = () => (
           Get in touch
         </h4>
         <ul className="mt-4 space-y-2 font-body text-[14px] text-body">
-          <li><a href="tel:+919876543210" className="hover:text-ink">+91 7708201511</a></li>
-          <li><a href="mailto:hello@venzix.com" className="hover:text-ink">infovenzix@gmail.com</a></li>
+           <li><a href={`tel:${SITE.phoneTel}`} className="hover:text-ink">{SITE.phoneDisplay}</a></li>
+          <li><a href={`mailto:${SITE.email}`} className="hover:text-ink">{SITE.email}</a></li>
           <li>
             <a
-              href="https://www.google.com/maps?q=Anna+Salai,+Chennai"
+              href="https://www.google.com/maps?q=Chinnasalem,+Tamil+Nadu+606201"
               target="_blank"
               rel="noreferrer"
               className="hover:text-ink"

@@ -1,10 +1,10 @@
 // src/components/WhatsAppButton.tsx
+import { waLink } from "@/config/site";
 
-const PHONE = "917708201511"; // India country code + number
 const MESSAGE = "Hi, I'm interested in your web development services.";
 
 const WhatsAppButton = () => {
-  const href = `https://wa.me/${PHONE}?text=${encodeURIComponent(MESSAGE)}`;
+  const href = waLink(MESSAGE);
   return (
     <a
       href={href}

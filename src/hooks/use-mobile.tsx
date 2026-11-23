@@ -1,4 +1,6 @@
 // src/hooks/use-mobile.tsx
+// FIX: Removed the entire duplicated use-reveal.ts block that was
+// incorrectly prepended to this file, causing a parse error.
 import * as React from "react";
 
 const MOBILE_BREAKPOINT = 768;
@@ -8,9 +10,7 @@ export function useIsMobile() {
 
   React.useEffect(() => {
     const mql = window.matchMedia(`(max-width: ${MOBILE_BREAKPOINT - 1}px)`);
-    const onChange = () => {
-      setIsMobile(window.innerWidth < MOBILE_BREAKPOINT);
-    };
+    const onChange = () => setIsMobile(window.innerWidth < MOBILE_BREAKPOINT);
     mql.addEventListener("change", onChange);
     setIsMobile(window.innerWidth < MOBILE_BREAKPOINT);
     return () => mql.removeEventListener("change", onChange);
